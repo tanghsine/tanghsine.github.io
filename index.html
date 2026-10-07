@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>hui · 把 AI 变成趁手的生活工具</title>
+<meta name="description" content="hui 的个人 AI 品牌站：AI 能力、工具方法论与 4 款自研 Web App。">
+<style>
+  :root{
+    --bg:#fafbfc; --card:#ffffff; --ink:#1a1d23; --muted:#5b6472;
+    --line:#e8ebf0; --accent:#5b5bd6; --accent2:#8b5cf6;
+    --grad:linear-gradient(135deg,#5b5bd6 0%,#8b5cf6 55%,#c084fc 100%);
+    --radius:18px; --shadow:0 10px 30px rgba(91,91,214,.10);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px}
+  /* ---------- 导航 ---------- */
+  nav{position:sticky;top:0;z-index:50;background:rgba(250,251,252,.86);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .logo{font-weight:800;font-size:1.15rem;letter-spacing:.02em}
+  .logo span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  nav ul{display:flex;gap:4px;list-style:none}
+  nav a.navlink{text-decoration:none;color:var(--muted);font-size:.86rem;padding:8px 10px;border-radius:10px}
+  nav a.navlink:hover{color:var(--ink);background:#eef0f6}
+  /* ---------- Hero ---------- */
+  .hero{padding:72px 0 56px;text-align:center;position:relative;overflow:hidden}
+  .hero::before{
+    content:"";position:absolute;inset:-40% -20% auto;height:560px;
+    background:radial-gradient(closest-side,rgba(139,92,246,.14),transparent 70%);
+    pointer-events:none;
+  }
+  .badge{display:inline-block;font-size:.78rem;color:var(--accent);background:#eeedfd;
+    border:1px solid #dcdafb;padding:6px 14px;border-radius:999px;margin-bottom:20px;font-weight:600}
+  .hero h1{font-size:clamp(2rem,6.4vw,3.4rem);line-height:1.28;font-weight:800;letter-spacing:-.01em;margin-bottom:18px}
+  .hero h1 .hl{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p.lead{color:var(--muted);font-size:clamp(1rem,2.8vw,1.15rem);max-width:640px;margin:0 auto 32px}
+  .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-block;text-decoration:none;font-weight:700;font-size:.95rem;
+    padding:13px 26px;border-radius:14px;transition:transform .15s ease,box-shadow .15s ease}
+  .btn.primary{background:var(--grad);color:#fff;box-shadow:var(--shadow)}
+  .btn.primary:hover{transform:translateY(-2px)}
+  .btn.ghost{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+  .btn.ghost:hover{border-color:#c9cfe0}
+  .stats{display:flex;gap:28px;justify-content:center;margin-top:44px;flex-wrap:wrap}
+  .stat{text-align:center}
+  .stat b{font-size:1.7rem;display:block;background:var(--grad);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat small{color:var(--muted);font-size:.82rem}
+  /* ---------- 通用版块 ---------- */
+  section.block{padding:56px 0}
+  .kicker{font-size:.8rem;font-weight:700;color:var(--accent);letter-spacing:.14em;margin-bottom:10px}
+  h2.sec{font-size:clamp(1.45rem,4.4vw,2rem);font-weight:800;margin-bottom:10px;letter-spacing:-.01em}
+  p.secdesc{color:var(--muted);max-width:640px;margin-bottom:30px}
+  .grid{display:grid;gap:16px}
+  @media(min-width:640px){.grid.cols2{grid-template-columns:1fr 1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:24px;box-shadow:0 2px 8px rgba(20,24,40,.04);transition:transform .18s ease,box-shadow .18s ease}
+  .card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .card .icon{width:46px;height:46px;border-radius:14px;background:var(--grad);
+    display:flex;align-items:center;justify-content:center;font-size:1.35rem;margin-bottom:14px}
+  .card h3{font-size:1.08rem;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:.93rem}
+  .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--accent);
+    background:#eeedfd;border-radius:8px;padding:3px 10px;margin:0 6px 6px 0}
+  /* ---------- 产品 ---------- */
+  .product{display:flex;flex-direction:column}
+  .product .meta{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+  .product .picon{width:52px;height:52px;border-radius:16px;flex:none;
+    display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:#fff}
+  .product h3{font-size:1.15rem}
+  .product .en{font-size:.76rem;color:var(--muted);font-weight:600;letter-spacing:.04em}
+  .product p{flex:1}
+  .product .links{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
+  .linkbtn{text-decoration:none;font-size:.85rem;font-weight:700;color:var(--accent);
+    border:1px solid #dcdafb;background:#f4f3fe;padding:9px 16px;border-radius:11px}
+  .linkbtn:hover{background:#eeedfd}
+  /* ---------- 关于 ---------- */
+  .about{background:var(--card);border:1px solid var(--line);border-radius:22px;
+    padding:34px 28px;box-shadow:0 2px 8px rgba(20,24,40,.04)}
+  .about p{color:var(--muted);margin-bottom:14px}
+  .about p strong{color:var(--ink)}
+  .contact-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+  footer{text-align:center;color:var(--muted);font-size:.82rem;padding:36px 20px 48px}
+  /* ---------- 动效 ---------- */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">hui<span>.ai</span></div>
+    <ul>
+      <li><a class="navlink" href="#ability">能力</a></li>
+      <li><a class="navlink" href="#method">方法</a></li>
+      <li><a class="navlink" href="#products">产品</a></li>
+      <li><a class="navlink" href="#about">关于</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ================= Hero ================= -->
+<header class="hero">
+  <div class="wrap">
+    <div class="badge reveal">🤖 个人 AI 品牌 · 独立开发者</div>
+    <h1 class="reveal">把 AI，变成<br><span class="hl">趁手的生活工具</span></h1>
+    <p class="lead reveal">我是 hui。我相信 AI 的价值不在参数和榜单，而在它能否真正装进口袋、融入日常。我用 AI 辅助设计、开发并长期打磨了 4 款自研 Web App，覆盖文化记录、人生思考、内容创作与财富管理——全部自己每天在用。</p>
+    <div class="cta reveal">
+      <a class="btn primary" href="#products">浏览我的产品</a>
+      <a class="btn ghost" href="https://github.com/tanghsine" target="_blank" rel="noopener">GitHub 主页</a>
+    </div>
+    <div class="stats reveal">
+      <div class="stat"><b>4</b><small>自研 Web App</small></div>
+      <div class="stat"><b>100%</b><small>AI 辅助开发</small></div>
+      <div class="stat"><b>📱</b><small>手机即装即用</small></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ================= AI 能力 ================= -->
+  <section class="block" id="ability">
+    <div class="kicker reveal">AI 能力</div>
+    <h2 class="sec reveal">我用 AI 做什么</h2>
+    <p class="secdesc reveal">不追概念，只做能落地的事。以下每一条，都有真实交付物对应。</p>
+    <div class="grid cols2">
+      <div class="card reveal">
+        <div class="icon">⚡</div>
+        <h3>AI 辅助全栈开发</h3>
+        <p>从一个想法到可用的 Web App：用 AI 加速需求拆解、界面设计、编码与调试，把"想做"变成"做完"。</p>
+        <!-- 待用户补充：具体技术栈（如 HTML/CSS/JS、PWA、localStorage 等） -->
+      </div>
+      <div class="card reveal">
+        <div class="icon">🧩</div>
+        <h3>把能力沉淀为工具</h3>
+        <p>不止于和 AI 对话——把反复验证有效的思路做成工具：记录、统计、提醒，让 AI 的能力变成每天顺手打开的 App。</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon">🔧</div>
+        <h3>产品级打磨</h3>
+        <p>Demo 之后才是真正的产品：补图标与 manifest、修体验细节、加纯文本备份与导入兼容，让工具经得起长期使用。</p>
+        <!-- 待用户补充：是否有代表性案例数据（如迭代次数、用户反馈故事） -->
+      </div>
+      <div class="card reveal">
+        <div class="icon">🔁</div>
+        <h3>真实反馈驱动迭代</h3>
+        <p>自己是第一个用户。遇到数据丢失就升级备份逻辑，觉得流程繁琐就精简 Tab——用真实使用感受决定下一个版本做什么。</p>
+      </div>
+    </div>
+    <!-- 待用户补充：如有 AI 相关证书、课程、工作坊经历，可在此处新增「学习与认证」小节 -->
+  </section>
+
+  <!-- ================= 工具箱 / 方法论 ================= -->
+  <section class="block" id="method">
+    <div class="kicker reveal">工具箱 · 方法论</div>
+    <h2 class="sec reveal">我的造物方法</h2>
+    <p class="secdesc reveal">四款 App 背后，是一套可复用的做法。</p>
+    <div class="grid cols2">
+      <div class="card reveal">
+        <div class="icon">🚀</div>
+        <h3>快速原型，AI 结对</h3>
+        <p>想法不等人：用 AI 结对编程，数小时内做出可运行的原型，先验证、再打磨，避免在错误的方向上精雕细琢。</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon">📲</div>
+        <h3>PWA 优先</h3>
+        <p>一次开发，多端可用。四款 App 均可直接"添加到主屏幕"，像原生应用一样打开，免去应用商店的上架成本。</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon">🗄️</div>
+        <h3>数据自主，本地优先</h3>
+        <p>数据存在本地，备份是人类可读的纯文本 JSON，一键复制即可存档。工具可以换，数据永远属于自己。</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon">🎯</div>
+        <h3>以用为测</h3>
+        <p>不上线"感觉不错"的功能，只保留每天真的会打开的东西。克制做加法，勇敢做减法。</p>
+      </div>
+    </div>
+    <div style="margin-top:16px" class="reveal">
+      <span class="tag">AI 结对编程</span><span class="tag">PWA</span><span class="tag">localStorage</span><span class="tag">移动端优先</span>
+      <!-- 待用户补充：实际使用的 AI 工具/模型名称（如 Muse、ChatGPT、Claude Code 等）可替换上方标签 -->
+    </div>
+  </section>
+
+  <!-- ================= 产品 ================= -->
+  <section class="block" id="products">
+    <div class="kicker reveal">个人产品</div>
+    <h2 class="sec reveal">四款自研 App</h2>
+    <p class="secdesc reveal">全部开源在 GitHub，网页即开即用，也可添加到手机主屏幕。</p>
+    <div class="grid cols2">
+
+      <div class="card product reveal">
+        <div class="meta">
+          <div class="picon" style="background:linear-gradient(135deg,#b45309,#f59e0b)">📚</div>
+          <div><h3>文心集</h3><div class="en">culture-archive</div></div>
+        </div>
+        <p>个人文化内核记录。沉淀阅读、观影与思考，打造一座属于自己的精神档案馆，让输入真正留下痕迹。</p>
+        <div class="links">
+          <a class="linkbtn" href="https://github.com/tanghsine/culture-archive" target="_blank" rel="noopener">GitHub 仓库 →</a>
+        </div>
+      </div>
+
+      <div class="card product reveal">
+        <div class="meta">
+          <div class="picon" style="background:linear-gradient(135deg,#0d9488,#2dd4bf)">🧭</div>
+          <div><h3>人生坐标</h3><div class="en">life-compass</div></div>
+        </div>
+        <p>人生思考与定位。定期记录所思所想、校准人生方向，把迷茫拆解成清晰的下一步。</p>
+        <div class="links">
+          <a class="linkbtn" href="https://github.com/tanghsine/life-compass" target="_blank" rel="noopener">GitHub 仓库 →</a>
+        </div>
+      </div>
+
+      <div class="card product reveal">
+        <div class="meta">
+          <div class="picon" style="background:linear-gradient(135deg,#7c3aed,#c084fc)">✍️</div>
+          <div><h3>创作矩阵</h3><div class="en">content-matrix</div></div>
+        </div>
+        <p>自媒体内容记录工具。灵感捕捉、选题管理、发布追踪一条线，本月统计一目了然，让持续创作有据可依。</p>
+        <div class="links">
+          <a class="linkbtn" href="https://github.com/tanghsine/content-matrix" target="_blank" rel="noopener">GitHub 仓库 →</a>
+        </div>
+      </div>
+
+      <div class="card product reveal">
+        <div class="meta">
+          <div class="picon" style="background:linear-gradient(135deg,#059669,#34d399)">💰</div>
+          <div><h3>财富罗盘</h3><div class="en">wealth-compass</div></div>
+        </div>
+        <p>财富记录。收支、资产清晰呈现，一眼看懂钱的来龙去脉，让每一分钱都有方向。</p>
+        <div class="links">
+          <a class="linkbtn" href="https://github.com/tanghsine/wealth-compass" target="_blank" rel="noopener">GitHub 仓库 →</a>
+        </div>
+      </div>
+
+    </div>
+    <!-- 待用户补充：各 App 的 GitHub Pages 在线体验地址，确认后可为每张卡片加「在线体验」按钮 -->
+  </section>
+
+  <!-- ================= 关于 / 联系 ================= -->
+  <section class="block" id="about">
+    <div class="kicker reveal">关于</div>
+    <h2 class="sec reveal">你好，我是 hui</h2>
+    <div class="about reveal">
+      <p>一名独立开发者，也是 AI 能力的"翻译者"——<strong>把前沿的 AI 能力，翻译成普通人每天用得上的小工具</strong>。</p>
+      <p>我不做追风口的产品，只做自己长期需要的工具：记录文化、校准人生、管理创作、打理财富。如果它对我有用，或许对你也有用。</p>
+      <p>所有项目均在 GitHub 开源，欢迎 Star、提 Issue，或直接联系我聊聊你的想法。</p>
+      <div class="contact-row">
+        <a class="btn primary" href="https://github.com/tanghsine" target="_blank" rel="noopener">GitHub: @tanghsine</a>
+        <!-- 待用户补充：邮箱 / 微信 / 公众号等联系方式，确认后在此处添加按钮 -->
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © <span id="year">2026</span> hui · 用 AI 打造 · 保持真诚，保持迭代
+</footer>
+
+<script>
+  // 年份自动更新
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // 滚动显现
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold: 0.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
+
+</body>
+</html>
