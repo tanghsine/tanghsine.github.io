@@ -104,6 +104,7 @@
       <li><a class="navlink" href="#ability">能力</a></li>
       <li><a class="navlink" href="#method">方法</a></li>
       <li><a class="navlink" href="#products">产品</a></li>
+      <li><a class="navlink" href="#tools">工具</a></li>
       <li><a class="navlink" href="#about">关于</a></li>
     </ul>
   </div>
@@ -249,6 +250,15 @@
     <!-- 待用户补充：各 App 的 GitHub Pages 在线体验地址，确认后可为每张卡片加「在线体验」按钮 -->
   </section>
 
+  <!-- ================= 常用工具 ================= -->
+  <section class="block" id="tools">
+    <div class="kicker reveal">常用工具</div>
+    <h2 class="sec reveal">顺手的在线工具</h2>
+    <p class="secdesc reveal">我日常在用的免费工具，亲测好用，持续收录中。</p>
+    <div class="grid cols2" id="tools-grid"></div>
+    <!-- 新增工具：在下方 <script> 的 TOOLS 数组里加一行即可 -->
+  </section>
+
   <!-- ================= 关于 / 联系 ================= -->
   <section class="block" id="about">
     <div class="kicker reveal">关于</div>
@@ -273,6 +283,24 @@
 <script>
   // 年份自动更新
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ---------- 常用工具（数据驱动：新增一行即可） ----------
+  // 格式：{icon:"emoji", name:"名称", desc:"一句话介绍", url:"https://…"}
+  var TOOLS = [
+    {icon:"⬇️", name:"cobalt.tools", desc:"免费开源的媒体下载工具：粘贴链接即可保存 X / YouTube / Instagram 等平台的视频与音频，无广告、无需注册。", url:"https://cobalt.tools/"},
+  ];
+  (function renderTools(){
+    var grid = document.getElementById('tools-grid');
+    if(!grid) return;
+    grid.innerHTML = TOOLS.map(function(t){
+      return '<div class="card reveal">'
+        + '<div class="icon">' + t.icon + '</div>'
+        + '<h3>' + t.name + '</h3>'
+        + '<p>' + t.desc + '</p>'
+        + '<div style="margin-top:16px"><a class="linkbtn" href="' + t.url + '" target="_blank" rel="noopener">前往使用 →</a></div>'
+        + '</div>';
+    }).join('');
+  })();
 
   // 滚动显现
   var io = new IntersectionObserver(function(entries){
