@@ -31,7 +31,11 @@
   nav ul{display:flex;gap:2px;list-style:none;align-items:center;flex-wrap:wrap}
   nav a.navlink{text-decoration:none;color:var(--muted);font-size:.88rem;padding:8px 11px;border-radius:10px;white-space:nowrap}
   nav a.navlink:hover{color:var(--ink);background:#1e1e26}
-  nav a.navlink.lang{font-size:.8rem;border:1px solid var(--line);margin-left:4px}
+  .langsel{display:flex;background:#17171f;border:1px solid var(--line);border-radius:999px;padding:3px;margin-left:8px}
+  .langsel a{text-decoration:none;color:var(--muted);font-size:.8rem;font-weight:700;padding:5px 12px;border-radius:999px;white-space:nowrap}
+  .langsel a.on{background:var(--grad);color:#fff}
+  .paychips{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+  .paychip{font-size:.76rem;color:var(--accent2);background:#16233f;border:1px solid #24457e;border-radius:999px;padding:4px 11px;font-weight:600}
   .nav-cta{text-decoration:none;background:var(--grad);color:#fff;font-weight:700;font-size:.88rem;
     padding:9px 18px;border-radius:11px;white-space:nowrap}
   /* ---------- Hero ---------- */
@@ -135,9 +139,7 @@
       <li><a class="navlink hideS" href="#showcase">展示</a></li>
       <li><a class="navlink hideS" href="#buy">价格</a></li>
       <li><a class="navlink hideS" href="#faq">FAQ</a></li>
-      <li><a class="navlink lang" href="index.html">中文</a></li>
-      <li><a class="navlink lang" href="en.html">EN</a></li>
-      <li><a class="navlink lang" href="ja.html">日本語</a></li>
+      <li class="langsel"><a href="index.html" class="on">中文</a><a href="en.html" class="">EN</a><a href="ja.html" class="">日本語</a></li>
       <li><a class="nav-cta" href="#buy">购买</a></li>
     </ul>
   </div>
@@ -214,8 +216,9 @@
           <li>达不到最低配置，全额退款</li>
         </ul>
         <!-- 爱发电商品上架后：把 href 换成商品链接即可 -->
-        <a class="btn primary" href="#contact" id="afdian-link">通过爱发电购买 →</a>
-        <p class="fineprint">爱发电店铺正在上架中；上架前可通过页脚联系方式直接购买，价格与交付方式不变。</p>
+        <a class="btn primary" href="#contact" id="afdian-link">立即购买 ¥129 →</a>
+        <div class="paychips"><span class="paychip">微信支付</span><span class="paychip">支付宝</span><span class="paychip">授权文件邮箱交付</span><span class="paychip">24 小时内发码</span><span class="paychip">离线激活</span></div>
+        <p class="fineprint">付款走爱发电（支持微信 / 支付宝）。店铺正在上架中：上架前点上方按钮会跳到页脚联系区，联系我转账购买即可——价格不变，同样 24 小时内发授权文件。</p>
       </div>
       <div class="card reveal">
         <h3>配置要求</h3>
@@ -226,7 +229,7 @@
     <h3 class="reveal" style="margin:36px 0 16px;font-size:1.08rem">购买只要三步</h3>
     <div class="steps">
       <div class="step reveal"><div class="num">1</div><h3>免费试用 14 天</h3><p>下载 Windows 安装包（入口上线中，先通过页脚联系方式获取试用包），全功能开放 14 天。</p></div>
-      <div class="step reveal"><div class="num">2</div><h3>爱发电下单</h3><p>在爱发电购买并留好邮箱，授权文件就发到这个邮箱。</p></div>
+      <div class="step reveal"><div class="num">2</div><h3>爱发电付款</h3><p>在爱发电下单，支持微信 / 支付宝；下单时留好邮箱，授权文件就发到这个邮箱。</p></div>
       <div class="step reveal"><div class="num">3</div><h3>导入即激活</h3><p>24 小时内收到授权文件，在万影「系统 → 授权管理」里导入，立即生效。</p></div>
     </div>
     <p class="fineprint reveal">离线激活全程不需要联网；试用期间的作品与设置在激活后完整保留。</p>
@@ -270,7 +273,7 @@
     <div class="flinks">
       <a href="https://x.com/zgybw520" target="_blank" rel="noopener">𝕏 @zgybw520</a>
       <span style="color:var(--muted);font-size:.88rem">币安广场 @zgybw</span>
-      <a href="index.html">中文</a><a href="en.html">EN</a><a href="ja.html">日本語</a>
+      <span class="langsel"><a href="index.html" class="on">中文</a><a href="en.html" class="">EN</a><a href="ja.html" class="">日本語</a></span>
     </div>
     <p class="fnote">万影 WanYing 由独立开发者 hsine 制作与维护。购买、反馈与合作请通过上方联系方式。</p>
     <p class="fnote">© <span id="year">2026</span> hsine</p>

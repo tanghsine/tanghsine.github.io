@@ -31,7 +31,11 @@
   nav ul{display:flex;gap:2px;list-style:none;align-items:center;flex-wrap:wrap}
   nav a.navlink{text-decoration:none;color:var(--muted);font-size:.88rem;padding:8px 11px;border-radius:10px;white-space:nowrap}
   nav a.navlink:hover{color:var(--ink);background:#1e1e26}
-  nav a.navlink.lang{font-size:.8rem;border:1px solid var(--line);margin-left:4px}
+  .langsel{display:flex;background:#17171f;border:1px solid var(--line);border-radius:999px;padding:3px;margin-left:8px}
+  .langsel a{text-decoration:none;color:var(--muted);font-size:.8rem;font-weight:700;padding:5px 12px;border-radius:999px;white-space:nowrap}
+  .langsel a.on{background:var(--grad);color:#fff}
+  .paychips{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+  .paychip{font-size:.76rem;color:var(--accent2);background:#16233f;border:1px solid #24457e;border-radius:999px;padding:4px 11px;font-weight:600}
   .nav-cta{text-decoration:none;background:var(--grad);color:#fff;font-weight:700;font-size:.88rem;
     padding:9px 18px;border-radius:11px;white-space:nowrap}
   /* ---------- Hero ---------- */
@@ -135,9 +139,7 @@
       <li><a class="navlink hideS" href="#showcase">ショーケース</a></li>
       <li><a class="navlink hideS" href="#buy">価格</a></li>
       <li><a class="navlink hideS" href="#faq">FAQ</a></li>
-      <li><a class="navlink lang" href="index.html">中文</a></li>
-      <li><a class="navlink lang" href="en.html">EN</a></li>
-      <li><a class="navlink lang" href="ja.html">日本語</a></li>
+      <li class="langsel"><a href="index.html" class="">中文</a><a href="en.html" class="">EN</a><a href="ja.html" class="on">日本語</a></li>
       <li><a class="nav-cta" href="#buy">購入</a></li>
     </ul>
   </div>
@@ -214,8 +216,9 @@
           <li>最低要件を満たさない場合は全額返金</li>
         </ul>
         <!-- 爱发电商品上架后：把 href 换成商品链接即可 -->
-        <a class="btn primary" href="#contact" id="afdian-link">購入のお問い合わせ →</a>
-        <p class="fineprint">海外向け決済（Lemon Squeezy / Paddle）は準備中です。それまでは下の連絡先からの手動対応となりますが、価格と納期は同じです。</p>
+        <a class="btn primary" href="#contact" id="afdian-link">今すぐ購入 — ¥129 →</a>
+        <div class="paychips"><span class="paychip">ライセンスはメール交付</span><span class="paychip">24時間以内</span><span class="paychip">オフライン認証</span><span class="paychip">アカウント不要</span></div>
+        <p class="fineprint">海外向け決済（Lemon Squeezy / Paddle）は準備中です。それまでは上のボタンを押すとフッターの連絡先に移動します。直接のご購入でも価格は同じで、24時間以内にライセンスファイルを送ります。</p>
       </div>
       <div class="card reveal">
         <h3>動作環境</h3>
@@ -274,7 +277,7 @@
     <div class="flinks">
       <a href="https://x.com/zgybw520" target="_blank" rel="noopener">𝕏 @zgybw520</a>
       <span style="color:var(--muted);font-size:.88rem">Binance Square @zgybw</span>
-      <a href="index.html">中文</a><a href="en.html">EN</a><a href="ja.html">日本語</a>
+      <span class="langsel"><a href="index.html" class="">中文</a><a href="en.html" class="">EN</a><a href="ja.html" class="on">日本語</a></span>
     </div>
     <p class="fnote">WanYing はインディー開発者 hsine が制作・保守しています。購入・フィードバック・コラボのご相談は上の連絡先からどうぞ。</p>
     <p class="fnote">© <span id="year">2026</span> hsine</p>
