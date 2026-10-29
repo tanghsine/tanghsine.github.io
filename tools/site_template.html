@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="@LANG@">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>@TITLE@</title>
+<meta name="description" content="@META@">
+<link rel="alternate" hreflang="zh-CN" href="index.html">
+<link rel="alternate" hreflang="en" href="en.html">
+<link rel="alternate" hreflang="ja" href="ja.html">
+<style>
+  :root{
+    --bg:#0b0b0e; --bg2:#101015; --card:#15151b; --card2:#1b1b23; --ink:#f4f4f6; --muted:#a7a7b3;
+    --line:#26262f; --accent:#4c8dff; --accent2:#7cabff;
+    --grad:linear-gradient(135deg,#3d7ae0 0%,#4c8dff 100%);
+    --radius:16px; --shadow:0 14px 40px rgba(0,0,0,.5);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.7; -webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  /* ---------- 导航 ---------- */
+  nav{position:sticky;top:0;z-index:50;background:rgba(11,11,14,.85);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:1.08rem;white-space:nowrap}
+  .brand .mark{width:34px;height:34px;border-radius:10px;background:var(--grad);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:1.02rem;box-shadow:0 4px 14px rgba(76,141,255,.35)}
+  .brand small{color:var(--muted);font-weight:600;font-size:.78rem;letter-spacing:.06em}
+  nav ul{display:flex;gap:2px;list-style:none;align-items:center;flex-wrap:wrap}
+  nav a.navlink{text-decoration:none;color:var(--muted);font-size:.88rem;padding:8px 11px;border-radius:10px;white-space:nowrap}
+  nav a.navlink:hover{color:var(--ink);background:#1e1e26}
+  .langsel{display:flex;background:#17171f;border:1px solid var(--line);border-radius:999px;padding:3px;margin-left:8px}
+  .langsel a{text-decoration:none;color:var(--muted);font-size:.8rem;font-weight:700;padding:5px 12px;border-radius:999px;white-space:nowrap}
+  .langsel a.on{background:var(--grad);color:#fff}
+  .paychips{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+  .paychip{font-size:.76rem;color:var(--accent2);background:#16233f;border:1px solid #24457e;border-radius:999px;padding:4px 11px;font-weight:600}
+  .nav-cta{text-decoration:none;background:var(--grad);color:#fff;font-weight:700;font-size:.88rem;
+    padding:9px 18px;border-radius:11px;white-space:nowrap}
+  /* ---------- Hero ---------- */
+  .hero{padding:84px 0 30px;text-align:center;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:-45% -20% auto;height:620px;
+    background:radial-gradient(closest-side,rgba(76,141,255,.17),transparent 70%);pointer-events:none}
+  .badge{display:inline-block;font-size:.78rem;color:var(--accent2);background:#152238;
+    border:1px solid #24457e;padding:6px 15px;border-radius:999px;margin-bottom:24px;font-weight:600}
+  .hero h1{font-size:clamp(2.3rem,6.6vw,3.9rem);line-height:1.22;font-weight:800;letter-spacing:-.01em;margin-bottom:20px}
+  .hero h1 .hl{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p.lead{color:var(--muted);font-size:clamp(1rem,2.6vw,1.16rem);max-width:680px;margin:0 auto 34px}
+  .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-block;text-decoration:none;font-weight:700;font-size:.96rem;
+    padding:14px 30px;border-radius:13px;transition:transform .15s ease,box-shadow .15s ease}
+  .btn.primary{background:var(--grad);color:#fff;box-shadow:var(--shadow)}
+  .btn.primary:hover{transform:translateY(-2px)}
+  .btn.ghost{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+  .btn.ghost:hover{border-color:var(--accent)}
+  .stats{display:flex;gap:16px 40px;justify-content:center;margin-top:46px;flex-wrap:wrap}
+  .stat{text-align:center}
+  .stat b{font-size:1.55rem;display:block;background:var(--grad);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat small{color:var(--muted);font-size:.82rem}
+  /* ---------- 产品截图框 ---------- */
+  .frame{margin:54px auto 0;max-width:920px;background:#101016;border:1px solid var(--line);
+    border-radius:18px;overflow:hidden;box-shadow:var(--shadow);text-align:left}
+  .frame-bar{display:flex;align-items:center;gap:7px;padding:11px 16px;border-bottom:1px solid var(--line);background:#14141b}
+  .frame-bar i{width:11px;height:11px;border-radius:50%;background:#33333f;display:block}
+  .frame-bar i:first-child{background:#4c8dff}
+  .frame-body{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;text-align:center;padding:28px;
+    background:radial-gradient(closest-side,rgba(76,141,255,.08),transparent 75%)}
+  .frame-body .shot-label{font-weight:700;font-size:1.02rem}
+  .frame-body .shot-label span{display:block;font-weight:400;font-size:.84rem;color:var(--muted);margin-top:8px}
+  /* ---------- 通用版块 ---------- */
+  section.block{padding:76px 0 8px}
+  .kicker{font-size:.78rem;font-weight:700;color:var(--accent2);letter-spacing:.16em;margin-bottom:10px;text-transform:uppercase}
+  h2.sec{font-size:clamp(1.5rem,4.4vw,2.1rem);font-weight:800;margin-bottom:10px;letter-spacing:-.01em}
+  p.secdesc{color:var(--muted);max-width:660px;margin-bottom:34px}
+  .grid{display:grid;gap:16px}
+  @media(min-width:640px){.grid.cols2{grid-template-columns:1fr 1fr}.grid.cols3{grid-template-columns:1fr 1fr 1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;
+    transition:transform .18s ease,border-color .18s ease}
+  .card:hover{transform:translateY(-3px);border-color:#343442}
+  .card .icon{width:46px;height:46px;border-radius:13px;background:#16233f;border:1px solid #24457e;
+    display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:15px}
+  .card h3{font-size:1.05rem;margin-bottom:7px}
+  .card p{color:var(--muted);font-size:.92rem}
+  /* ---------- 展示 ---------- */
+  .show-grid{display:grid;gap:16px}
+  @media(min-width:640px){.show-grid{grid-template-columns:1fr 1fr}}
+  .shot{background:#121218;border:1px dashed #383844;border-radius:var(--radius);
+    display:flex;align-items:center;justify-content:center;text-align:center;padding:26px 18px;aspect-ratio:4/3}
+  .shot .shot-label{font-weight:700;font-size:.98rem}
+  .shot .shot-label span{display:block;font-weight:400;font-size:.8rem;color:var(--muted);margin-top:7px}
+  /* ---------- 价格 ---------- */
+  .price-card{position:relative;border-color:#2c4a7d;background:linear-gradient(180deg,#171a24,#141419)}
+  .price-badge{position:absolute;top:-13px;left:26px;background:var(--grad);color:#fff;
+    font-size:.74rem;font-weight:800;padding:4px 13px;border-radius:999px;letter-spacing:.05em}
+  .price-row{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap;margin:8px 0 12px}
+  .price-now{font-size:2.5rem;font-weight:800;background:var(--grad);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .price-was{color:var(--muted);text-decoration:line-through;font-size:1.05rem}
+  .price-note{color:var(--muted);font-size:.88rem}
+  .price-feats{list-style:none;margin:16px 0 22px}
+  .price-feats li{padding:5px 0;font-size:.95rem}
+  .price-feats li::before{content:"✓ ";color:var(--accent2);font-weight:800}
+  .steps{display:grid;gap:16px}
+  @media(min-width:640px){.steps{grid-template-columns:1fr 1fr 1fr}}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .step .num{width:33px;height:33px;border-radius:50%;background:var(--grad);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:12px}
+  .step h3{font-size:1rem;margin-bottom:6px}
+  .step p{color:var(--muted);font-size:.9rem}
+  .fineprint{color:var(--muted);font-size:.86rem;margin-top:18px}
+  /* ---------- FAQ ---------- */
+  details.faq{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:17px 21px;margin-bottom:12px}
+  details.faq summary{cursor:pointer;font-weight:700;font-size:.97rem}
+  details.faq p{color:var(--muted);font-size:.92rem;margin-top:10px}
+  /* ---------- 页脚 ---------- */
+  footer{margin-top:84px;border-top:1px solid var(--line);background:var(--bg2)}
+  footer .wrap{padding:38px 24px 44px;display:flex;flex-wrap:wrap;gap:18px 34px;align-items:center;justify-content:space-between}
+  footer .fbrand{font-weight:800}
+  footer .fnote{color:var(--muted);font-size:.84rem;width:100%}
+  footer a{color:var(--muted);text-decoration:none;font-size:.88rem}
+  footer a:hover{color:var(--ink)}
+  .flinks{display:flex;gap:20px;flex-wrap:wrap}
+  /* ---------- 动效 ---------- */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+  @media(max-width:560px){nav ul .navlink.hideS{display:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="mark">h</span><span>hsine <small>@FOOT_PRODUCTS@</small></span></div>
+    <ul>
+      <li><a class="navlink hideS" href="#features">@NAV_FEATURES@</a></li>
+      <li><a class="navlink hideS" href="#showcase">@NAV_SHOWCASE@</a></li>
+      <li><a class="navlink hideS" href="#buy">@NAV_PRICING@</a></li>
+      <li><a class="navlink hideS" href="#faq">FAQ</a></li>
+      <li class="langsel"><a href="index.html" class="@LSEL_ZH@">中文</a><a href="en.html" class="@LSEL_EN@">EN</a><a href="ja.html" class="@LSEL_JA@">日本語</a></li>
+      <li><a class="nav-cta" href="#buy">@NAV_BUY@</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badge reveal">@HERO_BADGE@</div>
+    <h1 class="reveal">@HERO_H1@</h1>
+    <p class="lead reveal">@HERO_LEAD@</p>
+    <div class="cta reveal">
+      <a class="btn primary" href="#buy">@HERO_CTA1@</a>
+      <a class="btn ghost" href="#features">@HERO_CTA2@</a>
+    </div>
+    <div class="stats reveal">
+      <div class="stat"><b>@ST1B@</b><small>@ST1S@</small></div>
+      <div class="stat"><b>@ST2B@</b><small>@ST2S@</small></div>
+      <div class="stat"><b>@ST3B@</b><small>@ST3S@</small></div>
+      <div class="stat"><b>@ST4B@</b><small>@ST4S@</small></div>
+    </div>
+    <div class="frame reveal">
+      <div class="frame-bar"><i></i><i></i><i></i></div>
+      <div class="frame-body"><div class="shot-label">@SHOT0@<span>showcase/ui.png · 1600×900</span></div></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="block" id="features">
+    <div class="kicker reveal">@F_KICKER@</div>
+    <h2 class="sec reveal">@F_H2@</h2>
+    <p class="secdesc reveal">@F_DESC@</p>
+    <div class="grid cols3">
+      <div class="card reveal"><div class="icon">🖼</div><h3>@FEAT1T@</h3><p>@FEAT1P@</p></div>
+      <div class="card reveal"><div class="icon">✨</div><h3>@FEAT2T@</h3><p>@FEAT2P@</p></div>
+      <div class="card reveal"><div class="icon">🎬</div><h3>@FEAT3T@</h3><p>@FEAT3P@</p></div>
+      <div class="card reveal"><div class="icon">📝</div><h3>@FEAT4T@</h3><p>@FEAT4P@</p></div>
+      <div class="card reveal"><div class="icon">📦</div><h3>@FEAT5T@</h3><p>@FEAT5P@</p></div>
+      <div class="card reveal"><div class="icon">🔒</div><h3>@FEAT6T@</h3><p>@FEAT6P@</p></div>
+    </div>
+  </section>
+
+  <section class="block" id="showcase">
+    <div class="kicker reveal">@SH_KICKER@</div>
+    <h2 class="sec reveal">@SH_H2@</h2>
+    <p class="secdesc reveal">@SH_DESC@</p>
+    <div class="show-grid">
+      <div class="shot reveal"><div class="shot-label">@SHOT1@<span>showcase/style-1.png</span></div></div>
+      <div class="shot reveal"><div class="shot-label">@SHOT2@<span>showcase/style-2.png</span></div></div>
+      <div class="shot reveal"><div class="shot-label">@SHOT3@<span>showcase/style-3.png</span></div></div>
+      <div class="shot reveal"><div class="shot-label">@SHOT4@<span>showcase/style-4.png</span></div></div>
+    </div>
+  </section>
+
+  <section class="block" id="buy">
+    <div class="kicker reveal">@B_KICKER@</div>
+    <h2 class="sec reveal">@B_H2@</h2>
+    <p class="secdesc reveal">@B_DESC@</p>
+    <div class="grid cols2">
+      <div class="card price-card reveal">
+        <span class="price-badge">@PRICE_BADGE@</span>
+        <h3>@PRICE_NAME@</h3>
+        <div class="price-row">
+          <span class="price-now">¥129</span>
+          <span class="price-was">¥199</span>
+          <span class="price-note">@PRICE_NOTE@</span>
+        </div>
+        <ul class="price-feats">
+@PRICE_FEATS@
+        </ul>
+        <!-- 爱发电商品上架后：把 href 换成商品链接即可 -->
+        <a class="btn primary" href="#contact" id="afdian-link">@BUY_BTN@</a>
+        <div class="paychips">@PAY_CHIPS@</div>
+        <p class="fineprint">@BUY_NOTE@</p>
+      </div>
+      <div class="card reveal">
+        <h3>@CFG_H3@</h3>
+        <p>@CFG_P1@</p>
+        <p style="margin-top:10px">@CFG_P2@</p>
+      </div>
+    </div>
+    <h3 class="reveal" style="margin:36px 0 16px;font-size:1.08rem">@STEPS_H3@</h3>
+    <div class="steps">
+@STEPS@
+    </div>
+    <p class="fineprint reveal">@STEPS_NOTE@</p>
+  </section>
+
+  <section class="block" id="faq">
+    <div class="kicker reveal">FAQ</div>
+    <h2 class="sec reveal">@FAQ_H2@</h2>
+    <div style="height:12px"></div>
+@FAQS@
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <span class="fbrand">hsine</span>
+    <div class="flinks">
+      <a href="https://x.com/zgybw520" target="_blank" rel="noopener">𝕏 @zgybw520</a>
+      <span style="color:var(--muted);font-size:.88rem">@FOOT_BINANCE@</span>
+      <span class="langsel"><a href="index.html" class="@LSEL_ZH@">中文</a><a href="en.html" class="@LSEL_EN@">EN</a><a href="ja.html" class="@LSEL_JA@">日本語</a></span>
+    </div>
+    <p class="fnote">@FOOT_NOTE@</p>
+    <p class="fnote">© <span id="year">2026</span> hsine</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold: 0.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
+
+</body>
+</html>
