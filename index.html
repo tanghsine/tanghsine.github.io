@@ -93,6 +93,27 @@
   .show-grid{display:grid;gap:16px;margin-top:16px}
   @media(min-width:640px){.show-grid{grid-template-columns:1fr 1fr}}
   .show-grid .shot{aspect-ratio:4/3}
+  /* ---------- 购买 / FAQ ---------- */
+  .price-card{text-align:left}
+  .price-row{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:6px 0 10px}
+  .price-now{font-size:2.2rem;font-weight:800;background:var(--grad);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .price-was{color:var(--muted);text-decoration:line-through;font-size:1.05rem}
+  .price-note{color:var(--muted);font-size:.9rem}
+  .price-feats{list-style:none;margin:14px 0 4px}
+  .price-feats li{padding:5px 0;color:var(--ink);font-size:.95rem}
+  .price-feats li::before{content:"✓ ";color:var(--accent2);font-weight:800}
+  .steps{display:grid;gap:16px;counter-reset:step}
+  @media(min-width:640px){.steps{grid-template-columns:1fr 1fr 1fr}}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+  .step .num{width:34px;height:34px;border-radius:50%;background:var(--grad);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:12px}
+  .step h3{font-size:1rem;margin-bottom:6px}
+  .step p{color:var(--muted);font-size:.9rem}
+  details.faq{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:16px 20px;margin-bottom:12px}
+  details.faq summary{cursor:pointer;font-weight:700;font-size:.98rem}
+  details.faq p{color:var(--muted);font-size:.92rem;margin-top:10px}
   /* ---------- 关于 / 联系 ---------- */
   .about{background:var(--card);border:1px solid var(--line);border-radius:22px;
     padding:34px 28px;box-shadow:0 2px 8px rgba(0,0,0,.30)}
@@ -114,6 +135,7 @@
     <div class="logo">hsine<span>.ai</span></div>
     <ul>
       <li><a class="navlink" href="#products">产品</a></li>
+      <li><a class="navlink" href="#buy">购买</a></li>
       <li><a class="navlink" href="#showcase">展示</a></li>
       <li><a class="navlink" href="#tools">工具</a></li>
       <li><a class="navlink" href="#contact">联系</a></li>
@@ -155,11 +177,81 @@
         </div>
         <p>裁剪、旋转、翻转与色彩调整，图层编辑，个人图库与提示词库；本地 Qwen-Image 模型文生图 / 图生图，也可切换 OpenAI 云端引擎。14 天全功能试用，一次性买断，专业版导出无水印。</p>
         <div class="links">
-          <a class="linkbtn hot" href="#contact">联系购买 →</a>
+          <a class="linkbtn hot" href="#buy">查看价格与购买 →</a>
         </div>
       </div>
 
     </div>
+  </section>
+
+  <!-- ================= 购买 ================= -->
+  <section class="block" id="buy">
+    <div class="kicker reveal">购买</div>
+    <h2 class="sec reveal">万影 · 价格与购买</h2>
+    <p class="secdesc reveal">本站介绍的 imgine 桌面软件，产品名已统一为「万影」。先免费试用 14 天，全功能开放，觉得好用再买断。</p>
+    <div class="grid cols2">
+      <div class="card price-card reveal">
+        <h3>万影 专业版</h3>
+        <div class="price-row">
+          <span class="price-now">¥129</span>
+          <span class="price-was">¥199</span>
+          <span class="price-note">首发价 · 一次性买断</span>
+        </div>
+        <ul class="price-feats">
+          <li>一次付费，永久使用，无订阅</li>
+          <li>2.x 版本内免费更新</li>
+          <li>导出无水印，全部生成与编辑功能解锁</li>
+          <li>离线激活，不注册账号，不联网验证</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <h3>购买前先看配置</h3>
+        <p>本地 AI 生成吃显卡：<strong style="color:var(--ink)">最低 RTX 3060 12GB 起步，推荐 RTX 3090 级别</strong>，内存建议 16GB 以上。达不到最低配置请先别买；已购买后发现达不到的，全额退款。</p>
+        <p style="margin-top:10px">模型文件需自备（软件不内置权重），可在魔搭社区免费下载，FAQ 里有说明。</p>
+      </div>
+    </div>
+    <h3 class="reveal" style="margin:34px 0 16px;font-size:1.1rem">购买只要三步</h3>
+    <div class="steps">
+      <div class="step reveal"><div class="num">1</div><h3>在爱发电下单</h3><p>点下方按钮到爱发电购买，下单时留好你的邮箱，授权文件就发到这个邮箱。</p></div>
+      <div class="step reveal"><div class="num">2</div><h3>24 小时内收到授权文件</h3><p>人工发码期间承诺 24 小时内交付（通常更快）。没收到先看垃圾箱，再联系我。</p></div>
+      <div class="step reveal"><div class="num">3</div><h3>导入即激活</h3><p>打开万影 → 系统 → 授权管理 → 导入授权文件，立即生效。全程离线，不用注册。</p></div>
+    </div>
+    <div class="reveal" style="margin-top:26px;display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+      <!-- 爱发电商品上架后：把下面按钮的 href 换成商品链接即可，其余不用改 -->
+      <a class="btn primary" href="#contact">通过爱发电购买 →</a>
+      <span style="color:var(--muted);font-size:.9rem">爱发电店铺正在上架中；上架前可通过下方联系方式直接购买，流程和价格都一样。</span>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="block" id="faq">
+    <div class="kicker reveal">FAQ</div>
+    <h2 class="sec reveal">购买前常见问题</h2>
+    <div style="height:14px"></div>
+    <details class="faq reveal">
+      <summary>我的电脑能跑吗？</summary>
+      <p>本地图像与视频生成主要吃显卡显存。最低 RTX 3060 12GB（视频功能按低显存方式使用），推荐 RTX 3090 级别，内存建议 16GB 以上。达不到最低配置的请先不要购买；已购买后确认达不到的，全额退款。</p>
+    </details>
+    <details class="faq reveal">
+      <summary>模型文件从哪里下载？</summary>
+      <p>软件不内置任何模型权重，需要自备：Qwen-Image-2.1（图像）与 MiniMax-H3（视频）的 GGUF 权重都可以在魔搭社区（ModelScope）免费下载，在软件「设置」里逐个选到对应文件即可。权重许可归各自模型方所有，请按其许可使用。</p>
+    </details>
+    <details class="faq reveal">
+      <summary>试用版和专业版有什么区别？</summary>
+      <p>下载后先有 14 天全功能试用。试用到期进入免费版：生成停用、导出带水印。购买并导入授权文件后立即恢复全部功能，导出无水印。</p>
+    </details>
+    <details class="faq reveal">
+      <summary>激活需要联网或注册账号吗？</summary>
+      <p>不需要。授权是离线签名文件：购买后你会收到一个授权文件，在软件里导入即完成激活，不注册、不绑账号、不回连服务器验证。</p>
+    </details>
+    <details class="faq reveal">
+      <summary>第一次运行被 Windows 拦截怎么办？</summary>
+      <p>软件目前还没有做数字签名，Windows SmartScreen 可能弹出蓝色提示。点「更多信息」→「仍要运行」即可。请只从本站或官方渠道下载，不要用第三方来源的安装包。</p>
+    </details>
+    <details class="faq reveal">
+      <summary>可以退款吗？</summary>
+      <p>电脑达不到最低配置的，全额退款。其他情况通过爱发电订单或下方联系方式找我处理。</p>
+    </details>
   </section>
 
   <!-- ================= 展示 ================= -->
