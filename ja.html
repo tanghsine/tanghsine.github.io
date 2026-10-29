@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>hsine · WanYing — デスクトップ画像・動画スタジオ</title>
+<meta name="description" content="hsine の WanYing：画像編集、レイヤー、ローカル AI 画像・動画生成を備えたデスクトップ制作スタジオ。14日間無料トライアル、買い切り。">
+<link rel="alternate" hreflang="zh-CN" href="index.html">
+<link rel="alternate" hreflang="en" href="en.html">
+<link rel="alternate" hreflang="ja" href="ja.html">
+<style>
+  :root{
+    --bg:#0f0f12; --card:#17171c; --card2:#1e1e24; --ink:#f2f2f2; --muted:#a9a9a9;
+    --line:#2c2c2c; --accent:#4c8dff; --accent2:#6aa5ff;
+    --grad:linear-gradient(135deg,#3d7ae0 0%,#4c8dff 100%);
+    --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px}
+  /* ---------- 导航 ---------- */
+  nav{position:sticky;top:0;z-index:50;background:rgba(15,15,18,.86);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .logo{font-weight:800;font-size:1.15rem;letter-spacing:.02em}
+  .logo span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  nav ul{display:flex;gap:4px;list-style:none}
+  nav a.navlink{text-decoration:none;color:var(--muted);font-size:.86rem;padding:8px 10px;border-radius:10px}
+  nav a.navlink:hover{color:var(--ink);background:#232329}
+  /* ---------- Hero ---------- */
+  .hero{padding:72px 0 56px;text-align:center;position:relative;overflow:hidden}
+  .hero::before{
+    content:"";position:absolute;inset:-40% -20% auto;height:560px;
+    background:radial-gradient(closest-side,rgba(76,141,255,.16),transparent 70%);
+    pointer-events:none;
+  }
+  .badge{display:inline-block;font-size:.78rem;color:var(--accent2);background:#16233f;
+    border:1px solid #24457e;padding:6px 14px;border-radius:999px;margin-bottom:20px;font-weight:600}
+  .hero h1{font-size:clamp(2rem,6.4vw,3.4rem);line-height:1.28;font-weight:800;letter-spacing:-.01em;margin-bottom:18px}
+  .hero h1 .hl{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p.lead{color:var(--muted);font-size:clamp(1rem,2.8vw,1.15rem);max-width:640px;margin:0 auto 32px}
+  .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-block;text-decoration:none;font-weight:700;font-size:.95rem;
+    padding:13px 26px;border-radius:14px;transition:transform .15s ease,box-shadow .15s ease}
+  .btn.primary{background:var(--grad);color:#fff;box-shadow:var(--shadow)}
+  .btn.primary:hover{transform:translateY(-2px)}
+  .btn.ghost{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+  .btn.ghost:hover{border-color:#4c8dff}
+  .stats{display:flex;gap:28px;justify-content:center;margin-top:44px;flex-wrap:wrap}
+  .stat{text-align:center}
+  .stat b{font-size:1.7rem;display:block;background:var(--grad);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat small{color:var(--muted);font-size:.82rem}
+  /* ---------- 通用版块 ---------- */
+  section.block{padding:56px 0}
+  .kicker{font-size:.8rem;font-weight:700;color:var(--accent2);letter-spacing:.14em;margin-bottom:10px}
+  h2.sec{font-size:clamp(1.45rem,4.4vw,2rem);font-weight:800;margin-bottom:10px;letter-spacing:-.01em}
+  p.secdesc{color:var(--muted);max-width:640px;margin-bottom:30px}
+  .grid{display:grid;gap:16px}
+  @media(min-width:640px){.grid.cols2{grid-template-columns:1fr 1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:24px;box-shadow:0 2px 8px rgba(0,0,0,.30);transition:transform .18s ease,box-shadow .18s ease}
+  .card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .card .icon{width:46px;height:46px;border-radius:14px;background:var(--grad);
+    display:flex;align-items:center;justify-content:center;font-size:1.35rem;margin-bottom:14px}
+  .card h3{font-size:1.08rem;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:.93rem}
+  .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--accent2);
+    background:#16233f;border-radius:8px;padding:3px 10px;margin:0 6px 6px 0}
+  /* ---------- 产品 ---------- */
+  .product{display:flex;flex-direction:column}
+  .product .meta{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+  .product .picon{width:52px;height:52px;border-radius:16px;flex:none;
+    display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:#fff}
+  .product h3{font-size:1.15rem}
+  .product .en{font-size:.76rem;color:var(--muted);font-weight:600;letter-spacing:.04em}
+  .product p{flex:1}
+  .product .links{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
+  .linkbtn{text-decoration:none;font-size:.85rem;font-weight:700;color:var(--accent2);
+    border:1px solid #24457e;background:#16233f;padding:9px 16px;border-radius:11px}
+  .linkbtn:hover{background:#1d2f56}
+  .linkbtn.hot{background:var(--grad);color:#fff;border-color:transparent}
+  .linkbtn.hot:hover{background:var(--grad);filter:brightness(1.06)}
+  /* ---------- 展示 ---------- */
+  .shot{background:#1a1a20;border:1px dashed #3a3a44;border-radius:var(--radius);
+    display:flex;align-items:center;justify-content:center;text-align:center;padding:32px 20px}
+  .shot.hero-shot{aspect-ratio:16/9}
+  .shot .shot-label{font-weight:700;font-size:1rem}
+  .shot .shot-label span{display:block;font-weight:400;font-size:.82rem;color:var(--muted);margin-top:8px}
+  .show-grid{display:grid;gap:16px;margin-top:16px}
+  @media(min-width:640px){.show-grid{grid-template-columns:1fr 1fr}}
+  .show-grid .shot{aspect-ratio:4/3}
+  /* ---------- 购买 / FAQ ---------- */
+  .price-card{text-align:left}
+  .price-row{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:6px 0 10px}
+  .price-now{font-size:2.2rem;font-weight:800;background:var(--grad);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .price-was{color:var(--muted);text-decoration:line-through;font-size:1.05rem}
+  .price-note{color:var(--muted);font-size:.9rem}
+  .price-feats{list-style:none;margin:14px 0 4px}
+  .price-feats li{padding:5px 0;color:var(--ink);font-size:.95rem}
+  .price-feats li::before{content:"✓ ";color:var(--accent2);font-weight:800}
+  .steps{display:grid;gap:16px;counter-reset:step}
+  @media(min-width:640px){.steps{grid-template-columns:1fr 1fr 1fr}}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+  .step .num{width:34px;height:34px;border-radius:50%;background:var(--grad);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:12px}
+  .step h3{font-size:1rem;margin-bottom:6px}
+  .step p{color:var(--muted);font-size:.9rem}
+  details.faq{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:16px 20px;margin-bottom:12px}
+  details.faq summary{cursor:pointer;font-weight:700;font-size:.98rem}
+  details.faq p{color:var(--muted);font-size:.92rem;margin-top:10px}
+  /* ---------- 关于 / 联系 ---------- */
+  .about{background:var(--card);border:1px solid var(--line);border-radius:22px;
+    padding:34px 28px;box-shadow:0 2px 8px rgba(0,0,0,.30)}
+  .about p{color:var(--muted);margin-bottom:14px}
+  .about p strong{color:var(--ink)}
+  .contact-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+  .contact-row .btn{cursor:default}
+  footer{text-align:center;color:var(--muted);font-size:.82rem;padding:36px 20px 48px}
+  /* ---------- 动效 ---------- */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">hsine<span>.ai</span></div>
+    <ul>
+      <li><a class="navlink" href="#products">製品</a></li>
+      <li><a class="navlink" href="#buy">購入</a></li>
+      <li><a class="navlink" href="#showcase">ショーケース</a></li>
+      <li><a class="navlink" href="#tools">ツール</a></li>
+      <li><a class="navlink" href="#contact">お問い合わせ</a></li>
+      <li><a class="navlink" href="index.html">中文</a></li>
+      <li><a class="navlink" href="en.html">EN</a></li>
+      <li><a class="navlink" href="ja.html">日本語</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badge reveal">✦ インディー開発者</div>
+    <h1 class="reveal"><span class="hl">WanYing</span><br>デスクトップ画像・動画スタジオ</h1>
+    <p class="lead reveal">インディー開発者の hsine です。WanYing は AI ペアプログラミングでゼロから作ったデスクトップ制作スタジオです。画像編集とレイヤー、ローカル AI 画像生成（Qwen-Image 2.1）、制作カンバスでのローカル AI 動画生成（MiniMax-H3）、そして任意のクラウドエンジン。すべて自分の PC の中で動きます。</p>
+    <div class="cta reveal">
+      <a class="btn primary" href="#products">WanYing を見る</a>
+      <a class="btn ghost" href="#contact">お問い合わせ</a>
+    </div>
+    <div class="stats reveal">
+      <div class="stat"><b>14日間</b><small>全機能トライアル</small></div>
+      <div class="stat"><b>買い切り</b><small>サブスクなし</small></div>
+      <div class="stat"><b>100%</b><small>AI ペア開発</small></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="block" id="products">
+    <div class="kicker reveal">製品</div>
+    <h2 class="sec reveal">WanYing · デスクトップ制作スタジオ</h2>
+    <p class="secdesc reveal">クリエイター向けの Qt6 デスクトップスタジオ：編集、レイヤー、ローカル AI 画像・動画生成。14日間は全機能無料、その後は買い切りです。</p>
+    <div class="grid">
+      <div class="card product reveal">
+        <div class="meta">
+          <div class="picon" style="background:linear-gradient(135deg,#3d7ae0,#4c8dff)">✦</div>
+          <div><h3>WanYing</h3><div class="en">SuperImgStudio · 画像・動画 · ローカル AI</div></div>
+        </div>
+        <p>切り抜き・回転・色調整とレイヤー編集、ローカル Qwen-Image による画像生成と画像編集、絵コンテから MiniMax-H3 の動画クリップを作る制作カンバス、任意で使える OpenAI クラウドエンジン。Pro 版ではウォーターマークが消え、全生成機能が解放されます。</p>
+        <div class="links">
+          <a class="linkbtn hot" href="#buy">価格と購入 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="buy">
+    <div class="kicker reveal">購入</div>
+    <h2 class="sec reveal">WanYing · 価格と購入</h2>
+    <p class="secdesc reveal">旧称 imgine、製品名は「WanYing」に統一されました。まずは 14日間、全機能を無料でお試しください。</p>
+    <div class="grid cols2">
+      <div class="card price-card reveal">
+        <h3>WanYing Pro</h3>
+        <div class="price-row">
+          <span class="price-now">¥129</span>
+          <span class="price-was">¥199</span>
+          <span class="price-note">発売記念価格 · 買い切り（中国価格 ¥129／約 US$18、定価 ¥199）</span>
+        </div>
+        <ul class="price-feats">
+          <li>一回払いで永久利用、サブスクなし</li>
+          <li>2.x の間は無料アップデート</li>
+          <li>ウォーターマークなし、全生成・編集機能を解放</li>
+          <li>オフライン認証、アカウント登録不要</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <h3>購入前に GPU をご確認ください</h3>
+        <p>ローカル AI 生成は GPU を使います：<strong style="color:var(--ink)">最低 RTX 3060 12GB、推奨 RTX 3090 クラス</strong>、メモリは 16GB 以上推奨。最低要件を満たさない場合は購入をお控えください。購入後に満たないことが判明した場合は全額返金します。</p>
+        <p style="margin-top:10px">モデル本体はアプリに含まれません。無料でダウンロードできます（FAQ 参照）。</p>
+      </div>
+    </div>
+    <h3 class="reveal" style="margin:34px 0 16px;font-size:1.1rem">購入は 3 ステップ</h3>
+    <div class="steps">
+      <div class="step reveal"><div class="num">1</div><h3>お問い合わせから購入申込</h3><p>海外向け決済は準備中です。それまでは手動対応となります。下のお問い合わせからご連絡いただき、メールアドレスをお知らせください。ライセンスファイルはそのアドレスへ送ります。</p></div>
+      <div class="step reveal"><div class="num">2</div><h3>24時間以内にライセンスファイル送付</h3><p>当面は手動発行で、24時間以内の納品をお約束します（通常はもっと早いです）。迷惑メールもご確認ください。</p></div>
+      <div class="step reveal"><div class="num">3</div><h3>インポートすれば即時有効化</h3><p>WanYing を開き「システム → ライセンス管理 → ライセンスファイルをインポート」。これで完了です。完全オフライン、アカウント不要。</p></div>
+    </div>
+    <div class="reveal" style="margin-top:26px;display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+      <a class="btn primary" href="#contact">購入のお問い合わせ →</a>
+      <span style="color:var(--muted);font-size:.9rem">海外向け決済（Lemon Squeezy / Paddle）は準備中です。それまでの手動購入でも価格・納期は同じです。</span>
+    </div>
+  </section>
+
+  <section class="block" id="faq">
+    <div class="kicker reveal">FAQ</div>
+    <h2 class="sec reveal">購入前のよくある質問</h2>
+    <div style="height:14px"></div>
+    <details class="faq reveal">
+      <summary>私の PC で動きますか？</summary>
+      <p>ローカルでの画像・動画生成は GPU の VRAM を使います。最低 RTX 3060 12GB（動画は低 VRAM 向け設定で使用）、推奨 RTX 3090 クラス、メモリ 16GB 以上推奨。最低要件を満たさない場合は購入をお控えください。購入後に満たないことが判明した場合は全額返金します。</p>
+    </details>
+    <details class="faq reveal">
+      <summary>モデルファイルはどこで入手しますか？</summary>
+      <p>アプリにモデル本体は含まれません。Qwen-Image-2.1（画像）と MiniMax-H3（動画）の GGUF ウェイトは ModelScope で無料ダウンロードでき、アプリの「設定」から各ファイルを指定します。各モデルのライセンスは提供元の条件に従ってください。</p>
+    </details>
+    <details class="faq reveal">
+      <summary>トライアルと Pro の違いは？</summary>
+      <p>14日間は全機能が使えます。期限が過ぎると無料版になり、生成が停止し、書き出しにウォーターマークが入ります。ライセンスファイルをインポートすれば即座に全機能が戻り、ウォーターマークも消えます。</p>
+    </details>
+    <details class="faq reveal">
+      <summary>認証にネット接続やアカウントは必要ですか？</summary>
+      <p>不要です。ライセンスはオフライン署名ファイルで、アプリにインポートするだけで認証完了。登録もサーバー確認もありません。</p>
+    </details>
+    <details class="faq reveal">
+      <summary>Windows にブロックされます。どうすれば？</summary>
+      <p>現在まだコード署名がないため、SmartScreen の青い警告が出ることがあります。「詳細情報」→「実行」を選んでください。ダウンロードは必ず本サイトなど公式チャネルから行ってください。</p>
+    </details>
+    <details class="faq reveal">
+      <summary>返金はできますか？</summary>
+      <p>PC が最低要件を満たさない場合は全額返金します。その他の場合も、注文経由または下のお問い合わせからご相談ください。</p>
+    </details>
+    <details class="faq reveal">
+      <summary>地域による制限はありますか？</summary>
+      <p>アプリ自体は全世界で販売しています。ただし動画機能で使う MiniMax-H3 ウェイトのコミュニティライセンスでは、米国・EU・英国・韓国でのローカル展開が制限されています（日本は対象外です）。画像機能はすべての地域で問題なく使えます。</p>
+    </details>
+  </section>
+
+  <section class="block" id="showcase">
+    <div class="kicker reveal">ショーケース</div>
+    <h2 class="sec reveal">WanYing の画面</h2>
+    <p class="secdesc reveal">実際の UI スクリーンショットと、WanYing 自身の AI で生成した作例を掲載予定です。</p>
+    <div class="shot hero-shot reveal">
+      <div class="shot-label">アプリ UI ショーケース（生成予定）<span>showcase/ui.png · 1600×900</span></div>
+    </div>
+    <div class="show-grid">
+      <div class="shot reveal"><div class="shot-label">作例 1 · サイバーパンク<span>showcase/style-1.png</span></div></div>
+      <div class="shot reveal"><div class="shot-label">作例 2 · 水墨山水<span>showcase/style-2.png</span></div></div>
+      <div class="shot reveal"><div class="shot-label">作例 3 · ミニマルジオメトリ<span>showcase/style-3.png</span></div></div>
+      <div class="shot reveal"><div class="shot-label">作例 4 · シネマティック写実<span>showcase/style-4.png</span></div></div>
+    </div>
+  </section>
+
+  <section class="block" id="tools">
+    <div class="kicker reveal">ツール</div>
+    <h2 class="sec reveal">便利なオンラインツール</h2>
+    <p class="secdesc reveal">日常的に使っている無料ツールを集めています。</p>
+    <div class="grid cols2" id="tools-grid"></div>
+  </section>
+
+  <section class="block" id="contact">
+    <div class="kicker reveal">お問い合わせ</div>
+    <h2 class="sec reveal">連絡先</h2>
+    <div class="about reveal">
+      <p>こんにちは、hsine です。最先端の AI の力を、誰もが毎日使える道具に翻訳するインディー開発者です。</p>
+      <p>WanYing は私自身が毎日の画像・動画制作に使っているスタジオです。私の役に立つなら、あなたの役にも立つかもしれません。購入・フィードバック・コラボのご相談は下記からどうぞ。</p>
+      <div class="contact-row">
+        <a class="btn ghost" href="https://x.com/zgybw520" target="_blank" rel="noopener">𝕏 Twitter @zgybw520</a>
+        <span class="btn ghost">Binance Square @zgybw</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © <span id="year">2026</span> hsine · AI と共に作る · 誠実に、迭代し続ける
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  var TOOLS = [
+    {icon:"⬇️", name:"cobalt.tools", desc:"無料・オープンソースのメディアダウンローダー。リンクを貼るだけで X / YouTube / Instagram などの動画と音声を保存できます。広告なし、登録不要。", url:"https://cobalt.tools/"},
+  ];
+  (function renderTools(){
+    var grid = document.getElementById('tools-grid');
+    if(!grid) return;
+    grid.innerHTML = TOOLS.map(function(t){
+      return '<div class="card reveal">'
+        + '<div class="icon">' + t.icon + '</div>'
+        + '<h3>' + t.name + '</h3>'
+        + '<p>' + t.desc + '</p>'
+        + '<div style="margin-top:16px"><a class="linkbtn" href="' + t.url + '" target="_blank" rel="noopener">ツールを開く →</a></div>'
+        + '</div>';
+    }).join('');
+  })();
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold: 0.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
+
+</body>
+</html>
