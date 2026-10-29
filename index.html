@@ -3,234 +3,239 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>hsine · imgine 桌面图像编辑</title>
+<title>万影 WanYing · 本地 AI 视觉生产工作台</title>
+<meta name="description" content="万影 WanYing：为短视频创作者打造的桌面工作台——图像编辑、图层、本地 AI 生图与 AI 视频。14 天全功能免费试用，一次性买断。">
 <link rel="alternate" hreflang="zh-CN" href="index.html">
 <link rel="alternate" hreflang="en" href="en.html">
 <link rel="alternate" hreflang="ja" href="ja.html">
-<meta name="description" content="hsine 的个人主页：桌面图像编辑软件 imgine，以及顺手的在线工具。">
 <style>
   :root{
-    --bg:#0f0f12; --card:#17171c; --card2:#1e1e24; --ink:#f2f2f2; --muted:#a9a9a9;
-    --line:#2c2c2c; --accent:#4c8dff; --accent2:#6aa5ff;
+    --bg:#0b0b0e; --bg2:#101015; --card:#15151b; --card2:#1b1b23; --ink:#f4f4f6; --muted:#a7a7b3;
+    --line:#26262f; --accent:#4c8dff; --accent2:#7cabff;
     --grad:linear-gradient(135deg,#3d7ae0 0%,#4c8dff 100%);
-    --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.45);
+    --radius:16px; --shadow:0 14px 40px rgba(0,0,0,.5);
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{
-    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-    background:var(--bg); color:var(--ink); line-height:1.7;
-    -webkit-font-smoothing:antialiased;
-  }
-  .wrap{max-width:960px;margin:0 auto;padding:0 20px}
+  body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.7; -webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
   /* ---------- 导航 ---------- */
-  nav{position:sticky;top:0;z-index:50;background:rgba(15,15,18,.86);
-    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-    border-bottom:1px solid var(--line)}
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
-  .logo{font-weight:800;font-size:1.15rem;letter-spacing:.02em}
-  .logo span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-  nav ul{display:flex;gap:4px;list-style:none}
-  nav a.navlink{text-decoration:none;color:var(--muted);font-size:.86rem;padding:8px 10px;border-radius:10px}
-  nav a.navlink:hover{color:var(--ink);background:#232329}
+  nav{position:sticky;top:0;z-index:50;background:rgba(11,11,14,.85);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:1.08rem;white-space:nowrap}
+  .brand .mark{width:34px;height:34px;border-radius:10px;background:var(--grad);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:1.02rem;box-shadow:0 4px 14px rgba(76,141,255,.35)}
+  .brand small{color:var(--muted);font-weight:600;font-size:.78rem;letter-spacing:.06em}
+  nav ul{display:flex;gap:2px;list-style:none;align-items:center;flex-wrap:wrap}
+  nav a.navlink{text-decoration:none;color:var(--muted);font-size:.88rem;padding:8px 11px;border-radius:10px;white-space:nowrap}
+  nav a.navlink:hover{color:var(--ink);background:#1e1e26}
+  nav a.navlink.lang{font-size:.8rem;border:1px solid var(--line);margin-left:4px}
+  .nav-cta{text-decoration:none;background:var(--grad);color:#fff;font-weight:700;font-size:.88rem;
+    padding:9px 18px;border-radius:11px;white-space:nowrap}
   /* ---------- Hero ---------- */
-  .hero{padding:72px 0 56px;text-align:center;position:relative;overflow:hidden}
-  .hero::before{
-    content:"";position:absolute;inset:-40% -20% auto;height:560px;
-    background:radial-gradient(closest-side,rgba(76,141,255,.16),transparent 70%);
-    pointer-events:none;
-  }
-  .badge{display:inline-block;font-size:.78rem;color:var(--accent2);background:#16233f;
-    border:1px solid #24457e;padding:6px 14px;border-radius:999px;margin-bottom:20px;font-weight:600}
-  .hero h1{font-size:clamp(2rem,6.4vw,3.4rem);line-height:1.28;font-weight:800;letter-spacing:-.01em;margin-bottom:18px}
+  .hero{padding:84px 0 30px;text-align:center;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:-45% -20% auto;height:620px;
+    background:radial-gradient(closest-side,rgba(76,141,255,.17),transparent 70%);pointer-events:none}
+  .badge{display:inline-block;font-size:.78rem;color:var(--accent2);background:#152238;
+    border:1px solid #24457e;padding:6px 15px;border-radius:999px;margin-bottom:24px;font-weight:600}
+  .hero h1{font-size:clamp(2.3rem,6.6vw,3.9rem);line-height:1.22;font-weight:800;letter-spacing:-.01em;margin-bottom:20px}
   .hero h1 .hl{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .hero p.lead{color:var(--muted);font-size:clamp(1rem,2.8vw,1.15rem);max-width:640px;margin:0 auto 32px}
+  .hero p.lead{color:var(--muted);font-size:clamp(1rem,2.6vw,1.16rem);max-width:680px;margin:0 auto 34px}
   .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-  .btn{display:inline-block;text-decoration:none;font-weight:700;font-size:.95rem;
-    padding:13px 26px;border-radius:14px;transition:transform .15s ease,box-shadow .15s ease}
+  .btn{display:inline-block;text-decoration:none;font-weight:700;font-size:.96rem;
+    padding:14px 30px;border-radius:13px;transition:transform .15s ease,box-shadow .15s ease}
   .btn.primary{background:var(--grad);color:#fff;box-shadow:var(--shadow)}
   .btn.primary:hover{transform:translateY(-2px)}
   .btn.ghost{background:var(--card);color:var(--ink);border:1px solid var(--line)}
-  .btn.ghost:hover{border-color:#4c8dff}
-  .stats{display:flex;gap:28px;justify-content:center;margin-top:44px;flex-wrap:wrap}
+  .btn.ghost:hover{border-color:var(--accent)}
+  .stats{display:flex;gap:16px 40px;justify-content:center;margin-top:46px;flex-wrap:wrap}
   .stat{text-align:center}
-  .stat b{font-size:1.7rem;display:block;background:var(--grad);
+  .stat b{font-size:1.55rem;display:block;background:var(--grad);
     -webkit-background-clip:text;background-clip:text;color:transparent}
   .stat small{color:var(--muted);font-size:.82rem}
+  /* ---------- 产品截图框 ---------- */
+  .frame{margin:54px auto 0;max-width:920px;background:#101016;border:1px solid var(--line);
+    border-radius:18px;overflow:hidden;box-shadow:var(--shadow);text-align:left}
+  .frame-bar{display:flex;align-items:center;gap:7px;padding:11px 16px;border-bottom:1px solid var(--line);background:#14141b}
+  .frame-bar i{width:11px;height:11px;border-radius:50%;background:#33333f;display:block}
+  .frame-bar i:first-child{background:#4c8dff}
+  .frame-body{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;text-align:center;padding:28px;
+    background:radial-gradient(closest-side,rgba(76,141,255,.08),transparent 75%)}
+  .frame-body .shot-label{font-weight:700;font-size:1.02rem}
+  .frame-body .shot-label span{display:block;font-weight:400;font-size:.84rem;color:var(--muted);margin-top:8px}
   /* ---------- 通用版块 ---------- */
-  section.block{padding:56px 0}
-  .kicker{font-size:.8rem;font-weight:700;color:var(--accent2);letter-spacing:.14em;margin-bottom:10px}
-  h2.sec{font-size:clamp(1.45rem,4.4vw,2rem);font-weight:800;margin-bottom:10px;letter-spacing:-.01em}
-  p.secdesc{color:var(--muted);max-width:640px;margin-bottom:30px}
+  section.block{padding:76px 0 8px}
+  .kicker{font-size:.78rem;font-weight:700;color:var(--accent2);letter-spacing:.16em;margin-bottom:10px;text-transform:uppercase}
+  h2.sec{font-size:clamp(1.5rem,4.4vw,2.1rem);font-weight:800;margin-bottom:10px;letter-spacing:-.01em}
+  p.secdesc{color:var(--muted);max-width:660px;margin-bottom:34px}
   .grid{display:grid;gap:16px}
-  @media(min-width:640px){.grid.cols2{grid-template-columns:1fr 1fr}}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-    padding:24px;box-shadow:0 2px 8px rgba(0,0,0,.30);transition:transform .18s ease,box-shadow .18s ease}
-  .card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
-  .card .icon{width:46px;height:46px;border-radius:14px;background:var(--grad);
-    display:flex;align-items:center;justify-content:center;font-size:1.35rem;margin-bottom:14px}
-  .card h3{font-size:1.08rem;margin-bottom:8px}
-  .card p{color:var(--muted);font-size:.93rem}
-  .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--accent2);
-    background:#16233f;border-radius:8px;padding:3px 10px;margin:0 6px 6px 0}
-  /* ---------- 产品 ---------- */
-  .product{display:flex;flex-direction:column}
-  .product .meta{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-  .product .picon{width:52px;height:52px;border-radius:16px;flex:none;
-    display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:#fff}
-  .product h3{font-size:1.15rem}
-  .product .en{font-size:.76rem;color:var(--muted);font-weight:600;letter-spacing:.04em}
-  .product p{flex:1}
-  .product .links{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
-  .linkbtn{text-decoration:none;font-size:.85rem;font-weight:700;color:var(--accent2);
-    border:1px solid #24457e;background:#16233f;padding:9px 16px;border-radius:11px}
-  .linkbtn:hover{background:#1d2f56}
-  .linkbtn.hot{background:var(--grad);color:#fff;border-color:transparent}
-  .linkbtn.hot:hover{background:var(--grad);filter:brightness(1.06)}
+  @media(min-width:640px){.grid.cols2{grid-template-columns:1fr 1fr}.grid.cols3{grid-template-columns:1fr 1fr 1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;
+    transition:transform .18s ease,border-color .18s ease}
+  .card:hover{transform:translateY(-3px);border-color:#343442}
+  .card .icon{width:46px;height:46px;border-radius:13px;background:#16233f;border:1px solid #24457e;
+    display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:15px}
+  .card h3{font-size:1.05rem;margin-bottom:7px}
+  .card p{color:var(--muted);font-size:.92rem}
   /* ---------- 展示 ---------- */
-  .shot{background:#1a1a20;border:1px dashed #3a3a44;border-radius:var(--radius);
-    display:flex;align-items:center;justify-content:center;text-align:center;padding:32px 20px}
-  .shot.hero-shot{aspect-ratio:16/9}
-  .shot .shot-label{font-weight:700;font-size:1rem}
-  .shot .shot-label span{display:block;font-weight:400;font-size:.82rem;color:var(--muted);margin-top:8px}
-  .show-grid{display:grid;gap:16px;margin-top:16px}
+  .show-grid{display:grid;gap:16px}
   @media(min-width:640px){.show-grid{grid-template-columns:1fr 1fr}}
-  .show-grid .shot{aspect-ratio:4/3}
-  /* ---------- 购买 / FAQ ---------- */
-  .price-card{text-align:left}
-  .price-row{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:6px 0 10px}
-  .price-now{font-size:2.2rem;font-weight:800;background:var(--grad);
+  .shot{background:#121218;border:1px dashed #383844;border-radius:var(--radius);
+    display:flex;align-items:center;justify-content:center;text-align:center;padding:26px 18px;aspect-ratio:4/3}
+  .shot .shot-label{font-weight:700;font-size:.98rem}
+  .shot .shot-label span{display:block;font-weight:400;font-size:.8rem;color:var(--muted);margin-top:7px}
+  /* ---------- 价格 ---------- */
+  .price-card{position:relative;border-color:#2c4a7d;background:linear-gradient(180deg,#171a24,#141419)}
+  .price-badge{position:absolute;top:-13px;left:26px;background:var(--grad);color:#fff;
+    font-size:.74rem;font-weight:800;padding:4px 13px;border-radius:999px;letter-spacing:.05em}
+  .price-row{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap;margin:8px 0 12px}
+  .price-now{font-size:2.5rem;font-weight:800;background:var(--grad);
     -webkit-background-clip:text;background-clip:text;color:transparent}
   .price-was{color:var(--muted);text-decoration:line-through;font-size:1.05rem}
-  .price-note{color:var(--muted);font-size:.9rem}
-  .price-feats{list-style:none;margin:14px 0 4px}
-  .price-feats li{padding:5px 0;color:var(--ink);font-size:.95rem}
+  .price-note{color:var(--muted);font-size:.88rem}
+  .price-feats{list-style:none;margin:16px 0 22px}
+  .price-feats li{padding:5px 0;font-size:.95rem}
   .price-feats li::before{content:"✓ ";color:var(--accent2);font-weight:800}
-  .steps{display:grid;gap:16px;counter-reset:step}
+  .steps{display:grid;gap:16px}
   @media(min-width:640px){.steps{grid-template-columns:1fr 1fr 1fr}}
-  .step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
-  .step .num{width:34px;height:34px;border-radius:50%;background:var(--grad);color:#fff;
+  .step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .step .num{width:33px;height:33px;border-radius:50%;background:var(--grad);color:#fff;
     display:flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:12px}
   .step h3{font-size:1rem;margin-bottom:6px}
   .step p{color:var(--muted);font-size:.9rem}
-  details.faq{background:var(--card);border:1px solid var(--line);border-radius:14px;
-    padding:16px 20px;margin-bottom:12px}
-  details.faq summary{cursor:pointer;font-weight:700;font-size:.98rem}
+  .fineprint{color:var(--muted);font-size:.86rem;margin-top:18px}
+  /* ---------- FAQ ---------- */
+  details.faq{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:17px 21px;margin-bottom:12px}
+  details.faq summary{cursor:pointer;font-weight:700;font-size:.97rem}
   details.faq p{color:var(--muted);font-size:.92rem;margin-top:10px}
-  /* ---------- 关于 / 联系 ---------- */
-  .about{background:var(--card);border:1px solid var(--line);border-radius:22px;
-    padding:34px 28px;box-shadow:0 2px 8px rgba(0,0,0,.30)}
-  .about p{color:var(--muted);margin-bottom:14px}
-  .about p strong{color:var(--ink)}
-  .contact-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
-  .contact-row .btn{cursor:default}
-  footer{text-align:center;color:var(--muted);font-size:.82rem;padding:36px 20px 48px}
+  /* ---------- 页脚 ---------- */
+  footer{margin-top:84px;border-top:1px solid var(--line);background:var(--bg2)}
+  footer .wrap{padding:38px 24px 44px;display:flex;flex-wrap:wrap;gap:18px 34px;align-items:center;justify-content:space-between}
+  footer .fbrand{font-weight:800}
+  footer .fnote{color:var(--muted);font-size:.84rem;width:100%}
+  footer a{color:var(--muted);text-decoration:none;font-size:.88rem}
+  footer a:hover{color:var(--ink)}
+  .flinks{display:flex;gap:20px;flex-wrap:wrap}
   /* ---------- 动效 ---------- */
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
   .reveal.in{opacity:1;transform:none}
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+  @media(max-width:560px){nav ul .navlink.hideS{display:none}}
 </style>
 </head>
 <body>
 
 <nav>
   <div class="wrap">
-    <div class="logo">hsine<span>.ai</span></div>
+    <div class="brand"><span class="mark">万</span><span>WanYing <small>万影</small></span></div>
     <ul>
-      <li><a class="navlink" href="#products">产品</a></li>
-      <li><a class="navlink" href="#buy">购买</a></li>
-      <li><a class="navlink" href="#showcase">展示</a></li>
-      <li><a class="navlink" href="#tools">工具</a></li>
-      <li><a class="navlink" href="#contact">联系</a></li>
+      <li><a class="navlink hideS" href="#features">功能</a></li>
+      <li><a class="navlink hideS" href="#showcase">展示</a></li>
+      <li><a class="navlink hideS" href="#buy">价格</a></li>
+      <li><a class="navlink hideS" href="#faq">FAQ</a></li>
+      <li><a class="navlink lang" href="index.html">中文</a></li>
+      <li><a class="navlink lang" href="en.html">EN</a></li>
+      <li><a class="navlink lang" href="ja.html">日本語</a></li>
+      <li><a class="nav-cta" href="#buy">购买</a></li>
     </ul>
   </div>
 </nav>
 
-<!-- ================= Hero ================= -->
 <header class="hero">
   <div class="wrap">
-    <div class="badge reveal">✦ 独立开发者</div>
-    <h1 class="reveal"><span class="hl">imgine</span><br>桌面图像编辑</h1>
-    <p class="lead reveal">我是 hsine。我相信 AI 的价值不在参数和榜单，而在它能否真正装进口袋、融入日常。imgine 是我用 AI 结对编程从零打磨的桌面图像编辑软件：基础编辑、图层、本地 AI 生图与云端引擎，自己的每一张图都在上面处理。</p>
+    <div class="badge reveal">本地优先 · 一次买断 · 14 天免费试用</div>
+    <h1 class="reveal">万影 <span class="hl">WanYing</span><br>本地 AI 视觉生产工作台</h1>
+    <p class="lead reveal">为短视频创作者打造的桌面工作台：图像编辑、图层、本地 AI 生图与 AI 视频，全在你自己的电脑上完成。素材不出本机，不排队，不按量付费。</p>
     <div class="cta reveal">
-      <a class="btn primary" href="#products">了解 imgine</a>
-      <a class="btn ghost" href="#contact">联系我</a>
+      <a class="btn primary" href="#buy">¥129 购买专业版</a>
+      <a class="btn ghost" href="#features">了解功能</a>
     </div>
     <div class="stats reveal">
-      <div class="stat"><b>14 天</b><small>全功能试用</small></div>
-      <div class="stat"><b>一次性</b><small>买断制</small></div>
-      <div class="stat"><b>100%</b><small>AI 辅助开发</small></div>
+      <div class="stat"><b>14 天</b><small>全功能免费试用</small></div>
+      <div class="stat"><b>一次性</b><small>买断 · 无订阅</small></div>
+      <div class="stat"><b>2.x</b><small>版本内免费更新</small></div>
+      <div class="stat"><b>100%</b><small>本地运行</small></div>
+    </div>
+    <div class="frame reveal">
+      <div class="frame-bar"><i></i><i></i><i></i></div>
+      <div class="frame-body"><div class="shot-label">软件界面展示图（待生成）<span>showcase/ui.png · 1600×900</span></div></div>
     </div>
   </div>
 </header>
 
 <main class="wrap">
 
-  <!-- ================= 产品 ================= -->
-  <section class="block" id="products">
-    <div class="kicker reveal">个人产品</div>
-    <h2 class="sec reveal">imgine · 桌面图像编辑</h2>
-    <p class="secdesc reveal">一款用 Qt6 打造的桌面图像编辑软件：基础编辑、图层、本地 AI 生图与云端引擎。下载后 14 天全功能试用，一次性买断。</p>
-    <div class="grid">
-
-      <div class="card product reveal">
-        <div class="meta">
-          <div class="picon" style="background:linear-gradient(135deg,#3d7ae0,#4c8dff)">✦</div>
-          <div><h3>imgine</h3><div class="en">SuperImgStudio · 桌面图像编辑</div></div>
-        </div>
-        <p>裁剪、旋转、翻转与色彩调整，图层编辑，个人图库与提示词库；本地 Qwen-Image 模型文生图 / 图生图，也可切换 OpenAI 云端引擎。14 天全功能试用，一次性买断，专业版导出无水印。</p>
-        <div class="links">
-          <a class="linkbtn hot" href="#buy">查看价格与购买 →</a>
-        </div>
-      </div>
-
+  <section class="block" id="features">
+    <div class="kicker reveal">功能</div>
+    <h2 class="sec reveal">一个工作台，从修图到出片</h2>
+    <p class="secdesc reveal">把分散的工具收拢到一条生产线上：编辑、生图、生视频、组装，都在本地完成。</p>
+    <div class="grid cols3">
+      <div class="card reveal"><div class="icon">🖼</div><h3>图像编辑与图层</h3><p>裁剪、调色、蒙版、调整层与图层样式，日常修图一站完成。</p></div>
+      <div class="card reveal"><div class="icon">✨</div><h3>本地 AI 生图</h3><p>Qwen-Image 2.1 在本机运行，文生图与图生图，不上传、不排队。</p></div>
+      <div class="card reveal"><div class="icon">🎬</div><h3>AI 视频与制片画布</h3><p>MiniMax-H3 本地生成视频，分镜、参考图、组装成片一条线走完。</p></div>
+      <div class="card reveal"><div class="icon">📝</div><h3>剧本助手</h3><p>写作模型帮你润色剧本、拆解分镜，把想法变成可执行的工作流。</p></div>
+      <div class="card reveal"><div class="icon">📦</div><h3>模板与内容包</h3><p>工作流模板与内容包导入，跑通的流程存下来，一键复用。</p></div>
+      <div class="card reveal"><div class="icon">🔒</div><h3>本地优先 · 离线授权</h3><p>素材与模型都在本机，离线签名授权，不注册账号、不联网验证。</p></div>
     </div>
   </section>
 
-  <!-- ================= 购买 ================= -->
+  <section class="block" id="showcase">
+    <div class="kicker reveal">展示</div>
+    <h2 class="sec reveal">万影长这样</h2>
+    <p class="secdesc reveal">界面展示用软件真实截图；风格样张由万影的 AI 生图生成。</p>
+    <div class="show-grid">
+      <div class="shot reveal"><div class="shot-label">风格样张 1 · 赛博朋克<span>showcase/style-1.png</span></div></div>
+      <div class="shot reveal"><div class="shot-label">风格样张 2 · 水墨山水<span>showcase/style-2.png</span></div></div>
+      <div class="shot reveal"><div class="shot-label">风格样张 3 · 极简几何<span>showcase/style-3.png</span></div></div>
+      <div class="shot reveal"><div class="shot-label">风格样张 4 · 电影感写实<span>showcase/style-4.png</span></div></div>
+    </div>
+  </section>
+
   <section class="block" id="buy">
-    <div class="kicker reveal">购买</div>
-    <h2 class="sec reveal">万影 · 价格与购买</h2>
-    <p class="secdesc reveal">本站介绍的 imgine 桌面软件，产品名已统一为「万影」。先免费试用 14 天，全功能开放，觉得好用再买断。</p>
+    <div class="kicker reveal">价格</div>
+    <h2 class="sec reveal">简单定价，买断制</h2>
+    <p class="secdesc reveal">先免费试用 14 天，全功能开放；觉得好用，再一次性买断。</p>
     <div class="grid cols2">
       <div class="card price-card reveal">
+        <span class="price-badge">首发价</span>
         <h3>万影 专业版</h3>
         <div class="price-row">
           <span class="price-now">¥129</span>
           <span class="price-was">¥199</span>
-          <span class="price-note">首发价 · 一次性买断</span>
+          <span class="price-note">一次性买断 · 无订阅</span>
         </div>
         <ul class="price-feats">
-          <li>一次付费，永久使用，无订阅</li>
+          <li>全部生成与编辑功能解锁</li>
+          <li>导出无水印</li>
           <li>2.x 版本内免费更新</li>
-          <li>导出无水印，全部生成与编辑功能解锁</li>
-          <li>离线激活，不注册账号，不联网验证</li>
+          <li>离线激活，不注册账号</li>
+          <li>达不到最低配置，全额退款</li>
         </ul>
+        <!-- 爱发电商品上架后：把 href 换成商品链接即可 -->
+        <a class="btn primary" href="#contact" id="afdian-link">通过爱发电购买 →</a>
+        <p class="fineprint">爱发电店铺正在上架中；上架前可通过页脚联系方式直接购买，价格与交付方式不变。</p>
       </div>
       <div class="card reveal">
-        <h3>购买前先看配置</h3>
-        <p>本地 AI 生成吃显卡：<strong style="color:var(--ink)">最低 RTX 3060 12GB 起步，推荐 RTX 3090 级别</strong>，内存建议 16GB 以上。达不到最低配置请先别买；已购买后发现达不到的，全额退款。</p>
+        <h3>配置要求</h3>
+        <p>本地 AI 生成吃显卡：<strong style="color:var(--ink)">最低 RTX 3060 12GB 起步，推荐 RTX 3090 级别</strong>，内存建议 16GB 以上。达不到最低配置请先别买；已购买发现达不到的，全额退款。</p>
         <p style="margin-top:10px">模型文件需自备（软件不内置权重），可在魔搭社区免费下载，FAQ 里有说明。</p>
       </div>
     </div>
-    <h3 class="reveal" style="margin:34px 0 16px;font-size:1.1rem">购买只要三步</h3>
+    <h3 class="reveal" style="margin:36px 0 16px;font-size:1.08rem">购买只要三步</h3>
     <div class="steps">
-      <div class="step reveal"><div class="num">1</div><h3>在爱发电下单</h3><p>点下方按钮到爱发电购买，下单时留好你的邮箱，授权文件就发到这个邮箱。</p></div>
-      <div class="step reveal"><div class="num">2</div><h3>24 小时内收到授权文件</h3><p>人工发码期间承诺 24 小时内交付（通常更快）。没收到先看垃圾箱，再联系我。</p></div>
-      <div class="step reveal"><div class="num">3</div><h3>导入即激活</h3><p>打开万影 → 系统 → 授权管理 → 导入授权文件，立即生效。全程离线，不用注册。</p></div>
+      <div class="step reveal"><div class="num">1</div><h3>免费试用 14 天</h3><p>下载 Windows 安装包（入口上线中，先通过页脚联系方式获取试用包），全功能开放 14 天。</p></div>
+      <div class="step reveal"><div class="num">2</div><h3>爱发电下单</h3><p>在爱发电购买并留好邮箱，授权文件就发到这个邮箱。</p></div>
+      <div class="step reveal"><div class="num">3</div><h3>导入即激活</h3><p>24 小时内收到授权文件，在万影「系统 → 授权管理」里导入，立即生效。</p></div>
     </div>
-    <div class="reveal" style="margin-top:26px;display:flex;gap:12px;flex-wrap:wrap;align-items:center">
-      <!-- 爱发电商品上架后：把下面按钮的 href 换成商品链接即可，其余不用改 -->
-      <a class="btn primary" href="#contact">通过爱发电购买 →</a>
-      <span style="color:var(--muted);font-size:.9rem">爱发电店铺正在上架中；上架前可通过下方联系方式直接购买，流程和价格都一样。</span>
-    </div>
+    <p class="fineprint reveal">离线激活全程不需要联网；试用期间的作品与设置在激活后完整保留。</p>
   </section>
 
-  <!-- ================= FAQ ================= -->
   <section class="block" id="faq">
     <div class="kicker reveal">FAQ</div>
     <h2 class="sec reveal">购买前常见问题</h2>
-    <div style="height:14px"></div>
+    <div style="height:12px"></div>
     <details class="faq reveal">
       <summary>我的电脑能跑吗？</summary>
       <p>本地图像与视频生成主要吃显卡显存。最低 RTX 3060 12GB（视频功能按低显存方式使用），推荐 RTX 3090 级别，内存建议 16GB 以上。达不到最低配置的请先不要购买；已购买后确认达不到的，全额退款。</p>
@@ -253,78 +258,27 @@
     </details>
     <details class="faq reveal">
       <summary>可以退款吗？</summary>
-      <p>电脑达不到最低配置的，全额退款。其他情况通过爱发电订单或下方联系方式找我处理。</p>
+      <p>电脑达不到最低配置的，全额退款。其他情况通过爱发电订单或页脚联系方式找我处理。</p>
     </details>
-  </section>
-
-  <!-- ================= 展示 ================= -->
-  <section class="block" id="showcase">
-    <div class="kicker reveal">展示</div>
-    <h2 class="sec reveal">imgine 长这样</h2>
-    <p class="secdesc reveal">界面展示用软件真实截图；风格样张由 imgine 的 AI 生图生成。</p>
-    <div class="shot hero-shot reveal">
-      <div class="shot-label">软件界面展示图（待生成）<span>用软件真实截图 · 1600×900 · 保存为 showcase/ui.png</span></div>
-    </div>
-    <div class="show-grid">
-      <div class="shot reveal"><div class="shot-label">风格样张 1 · 赛博朋克<span>showcase/style-1.png</span></div></div>
-      <div class="shot reveal"><div class="shot-label">风格样张 2 · 水墨山水<span>showcase/style-2.png</span></div></div>
-      <div class="shot reveal"><div class="shot-label">风格样张 3 · 极简几何<span>showcase/style-3.png</span></div></div>
-      <div class="shot reveal"><div class="shot-label">风格样张 4 · 电影感写实<span>showcase/style-4.png</span></div></div>
-    </div>
-  </section>
-
-  <!-- ================= 常用工具 ================= -->
-  <section class="block" id="tools">
-    <div class="kicker reveal">常用工具</div>
-    <h2 class="sec reveal">顺手的在线工具</h2>
-    <p class="secdesc reveal">我日常在用的免费工具，亲测好用，持续收录中。</p>
-    <div class="grid cols2" id="tools-grid"></div>
-    <!-- 新增工具：在下方 <script> 的 TOOLS 数组里加一行即可 -->
-  </section>
-
-  <!-- ================= 联系 ================= -->
-  <section class="block" id="contact">
-    <div class="kicker reveal">联系</div>
-    <h2 class="sec reveal">找到我</h2>
-    <div class="about reveal">
-      <p>你好，我是 hsine。独立开发者，也是 AI 能力的"翻译者"——<strong>把前沿的 AI 能力，翻译成普通人每天用得上的工具</strong>。</p>
-      <p>imgine 是我每天用来处理图片的桌面编辑软件。如果它对我有用，或许对你也有用。购买、反馈与合作，都可以通过下面找到我。</p>
-      <div class="contact-row">
-        <a class="btn ghost" href="https://x.com/zgybw520" target="_blank" rel="noopener">𝕏 Twitter @zgybw520</a>
-        <span class="btn ghost">币安广场 @zgybw</span>
-      </div>
-    </div>
   </section>
 
 </main>
 
-<footer>
-  © <span id="year">2026</span> hsine · 用 AI 打造 · 保持真诚，保持迭代
+<footer id="contact">
+  <div class="wrap">
+    <span class="fbrand">WanYing 万影</span>
+    <div class="flinks">
+      <a href="https://x.com/zgybw520" target="_blank" rel="noopener">𝕏 @zgybw520</a>
+      <span style="color:var(--muted);font-size:.88rem">币安广场 @zgybw</span>
+      <a href="index.html">中文</a><a href="en.html">EN</a><a href="ja.html">日本語</a>
+    </div>
+    <p class="fnote">万影 WanYing 由独立开发者 hsine 制作与维护。购买、反馈与合作请通过上方联系方式。</p>
+    <p class="fnote">© <span id="year">2026</span> hsine</p>
+  </div>
 </footer>
 
 <script>
-  // 年份自动更新
   document.getElementById('year').textContent = new Date().getFullYear();
-
-  // ---------- 常用工具（数据驱动：新增一行即可） ----------
-  // 格式：{icon:"emoji", name:"名称", desc:"一句话介绍", url:"https://…"}
-  var TOOLS = [
-    {icon:"⬇️", name:"cobalt.tools", desc:"免费开源的媒体下载工具：粘贴链接即可保存 X / YouTube / Instagram 等平台的视频与音频，无广告、无需注册。", url:"https://cobalt.tools/"},
-  ];
-  (function renderTools(){
-    var grid = document.getElementById('tools-grid');
-    if(!grid) return;
-    grid.innerHTML = TOOLS.map(function(t){
-      return '<div class="card reveal">'
-        + '<div class="icon">' + t.icon + '</div>'
-        + '<h3>' + t.name + '</h3>'
-        + '<p>' + t.desc + '</p>'
-        + '<div style="margin-top:16px"><a class="linkbtn" href="' + t.url + '" target="_blank" rel="noopener">前往使用 →</a></div>'
-        + '</div>';
-    }).join('');
-  })();
-
-  // 滚动显现
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }

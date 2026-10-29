@@ -3,230 +3,239 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>hsine · WanYing — Desktop Image & Video Studio</title>
-<meta name="description" content="WanYing by hsine: a desktop creative studio with image editing, layers, local AI image and video generation. 14-day free trial, one-time purchase.">
+<title>WanYing · Local AI Visual Production Studio</title>
+<meta name="description" content="WanYing: a desktop studio for short-video creators — image editing, layers, local AI image and video generation. 14-day full trial, one-time purchase.">
 <link rel="alternate" hreflang="zh-CN" href="index.html">
 <link rel="alternate" hreflang="en" href="en.html">
 <link rel="alternate" hreflang="ja" href="ja.html">
 <style>
   :root{
-    --bg:#0f0f12; --card:#17171c; --card2:#1e1e24; --ink:#f2f2f2; --muted:#a9a9a9;
-    --line:#2c2c2c; --accent:#4c8dff; --accent2:#6aa5ff;
+    --bg:#0b0b0e; --bg2:#101015; --card:#15151b; --card2:#1b1b23; --ink:#f4f4f6; --muted:#a7a7b3;
+    --line:#26262f; --accent:#4c8dff; --accent2:#7cabff;
     --grad:linear-gradient(135deg,#3d7ae0 0%,#4c8dff 100%);
-    --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.45);
+    --radius:16px; --shadow:0 14px 40px rgba(0,0,0,.5);
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{
-    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-    background:var(--bg); color:var(--ink); line-height:1.7;
-    -webkit-font-smoothing:antialiased;
-  }
-  .wrap{max-width:960px;margin:0 auto;padding:0 20px}
+  body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.7; -webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
   /* ---------- 导航 ---------- */
-  nav{position:sticky;top:0;z-index:50;background:rgba(15,15,18,.86);
-    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-    border-bottom:1px solid var(--line)}
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
-  .logo{font-weight:800;font-size:1.15rem;letter-spacing:.02em}
-  .logo span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-  nav ul{display:flex;gap:4px;list-style:none}
-  nav a.navlink{text-decoration:none;color:var(--muted);font-size:.86rem;padding:8px 10px;border-radius:10px}
-  nav a.navlink:hover{color:var(--ink);background:#232329}
+  nav{position:sticky;top:0;z-index:50;background:rgba(11,11,14,.85);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:1.08rem;white-space:nowrap}
+  .brand .mark{width:34px;height:34px;border-radius:10px;background:var(--grad);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:1.02rem;box-shadow:0 4px 14px rgba(76,141,255,.35)}
+  .brand small{color:var(--muted);font-weight:600;font-size:.78rem;letter-spacing:.06em}
+  nav ul{display:flex;gap:2px;list-style:none;align-items:center;flex-wrap:wrap}
+  nav a.navlink{text-decoration:none;color:var(--muted);font-size:.88rem;padding:8px 11px;border-radius:10px;white-space:nowrap}
+  nav a.navlink:hover{color:var(--ink);background:#1e1e26}
+  nav a.navlink.lang{font-size:.8rem;border:1px solid var(--line);margin-left:4px}
+  .nav-cta{text-decoration:none;background:var(--grad);color:#fff;font-weight:700;font-size:.88rem;
+    padding:9px 18px;border-radius:11px;white-space:nowrap}
   /* ---------- Hero ---------- */
-  .hero{padding:72px 0 56px;text-align:center;position:relative;overflow:hidden}
-  .hero::before{
-    content:"";position:absolute;inset:-40% -20% auto;height:560px;
-    background:radial-gradient(closest-side,rgba(76,141,255,.16),transparent 70%);
-    pointer-events:none;
-  }
-  .badge{display:inline-block;font-size:.78rem;color:var(--accent2);background:#16233f;
-    border:1px solid #24457e;padding:6px 14px;border-radius:999px;margin-bottom:20px;font-weight:600}
-  .hero h1{font-size:clamp(2rem,6.4vw,3.4rem);line-height:1.28;font-weight:800;letter-spacing:-.01em;margin-bottom:18px}
+  .hero{padding:84px 0 30px;text-align:center;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:-45% -20% auto;height:620px;
+    background:radial-gradient(closest-side,rgba(76,141,255,.17),transparent 70%);pointer-events:none}
+  .badge{display:inline-block;font-size:.78rem;color:var(--accent2);background:#152238;
+    border:1px solid #24457e;padding:6px 15px;border-radius:999px;margin-bottom:24px;font-weight:600}
+  .hero h1{font-size:clamp(2.3rem,6.6vw,3.9rem);line-height:1.22;font-weight:800;letter-spacing:-.01em;margin-bottom:20px}
   .hero h1 .hl{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .hero p.lead{color:var(--muted);font-size:clamp(1rem,2.8vw,1.15rem);max-width:640px;margin:0 auto 32px}
+  .hero p.lead{color:var(--muted);font-size:clamp(1rem,2.6vw,1.16rem);max-width:680px;margin:0 auto 34px}
   .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-  .btn{display:inline-block;text-decoration:none;font-weight:700;font-size:.95rem;
-    padding:13px 26px;border-radius:14px;transition:transform .15s ease,box-shadow .15s ease}
+  .btn{display:inline-block;text-decoration:none;font-weight:700;font-size:.96rem;
+    padding:14px 30px;border-radius:13px;transition:transform .15s ease,box-shadow .15s ease}
   .btn.primary{background:var(--grad);color:#fff;box-shadow:var(--shadow)}
   .btn.primary:hover{transform:translateY(-2px)}
   .btn.ghost{background:var(--card);color:var(--ink);border:1px solid var(--line)}
-  .btn.ghost:hover{border-color:#4c8dff}
-  .stats{display:flex;gap:28px;justify-content:center;margin-top:44px;flex-wrap:wrap}
+  .btn.ghost:hover{border-color:var(--accent)}
+  .stats{display:flex;gap:16px 40px;justify-content:center;margin-top:46px;flex-wrap:wrap}
   .stat{text-align:center}
-  .stat b{font-size:1.7rem;display:block;background:var(--grad);
+  .stat b{font-size:1.55rem;display:block;background:var(--grad);
     -webkit-background-clip:text;background-clip:text;color:transparent}
   .stat small{color:var(--muted);font-size:.82rem}
+  /* ---------- 产品截图框 ---------- */
+  .frame{margin:54px auto 0;max-width:920px;background:#101016;border:1px solid var(--line);
+    border-radius:18px;overflow:hidden;box-shadow:var(--shadow);text-align:left}
+  .frame-bar{display:flex;align-items:center;gap:7px;padding:11px 16px;border-bottom:1px solid var(--line);background:#14141b}
+  .frame-bar i{width:11px;height:11px;border-radius:50%;background:#33333f;display:block}
+  .frame-bar i:first-child{background:#4c8dff}
+  .frame-body{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;text-align:center;padding:28px;
+    background:radial-gradient(closest-side,rgba(76,141,255,.08),transparent 75%)}
+  .frame-body .shot-label{font-weight:700;font-size:1.02rem}
+  .frame-body .shot-label span{display:block;font-weight:400;font-size:.84rem;color:var(--muted);margin-top:8px}
   /* ---------- 通用版块 ---------- */
-  section.block{padding:56px 0}
-  .kicker{font-size:.8rem;font-weight:700;color:var(--accent2);letter-spacing:.14em;margin-bottom:10px}
-  h2.sec{font-size:clamp(1.45rem,4.4vw,2rem);font-weight:800;margin-bottom:10px;letter-spacing:-.01em}
-  p.secdesc{color:var(--muted);max-width:640px;margin-bottom:30px}
+  section.block{padding:76px 0 8px}
+  .kicker{font-size:.78rem;font-weight:700;color:var(--accent2);letter-spacing:.16em;margin-bottom:10px;text-transform:uppercase}
+  h2.sec{font-size:clamp(1.5rem,4.4vw,2.1rem);font-weight:800;margin-bottom:10px;letter-spacing:-.01em}
+  p.secdesc{color:var(--muted);max-width:660px;margin-bottom:34px}
   .grid{display:grid;gap:16px}
-  @media(min-width:640px){.grid.cols2{grid-template-columns:1fr 1fr}}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-    padding:24px;box-shadow:0 2px 8px rgba(0,0,0,.30);transition:transform .18s ease,box-shadow .18s ease}
-  .card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
-  .card .icon{width:46px;height:46px;border-radius:14px;background:var(--grad);
-    display:flex;align-items:center;justify-content:center;font-size:1.35rem;margin-bottom:14px}
-  .card h3{font-size:1.08rem;margin-bottom:8px}
-  .card p{color:var(--muted);font-size:.93rem}
-  .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--accent2);
-    background:#16233f;border-radius:8px;padding:3px 10px;margin:0 6px 6px 0}
-  /* ---------- 产品 ---------- */
-  .product{display:flex;flex-direction:column}
-  .product .meta{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-  .product .picon{width:52px;height:52px;border-radius:16px;flex:none;
-    display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:#fff}
-  .product h3{font-size:1.15rem}
-  .product .en{font-size:.76rem;color:var(--muted);font-weight:600;letter-spacing:.04em}
-  .product p{flex:1}
-  .product .links{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
-  .linkbtn{text-decoration:none;font-size:.85rem;font-weight:700;color:var(--accent2);
-    border:1px solid #24457e;background:#16233f;padding:9px 16px;border-radius:11px}
-  .linkbtn:hover{background:#1d2f56}
-  .linkbtn.hot{background:var(--grad);color:#fff;border-color:transparent}
-  .linkbtn.hot:hover{background:var(--grad);filter:brightness(1.06)}
+  @media(min-width:640px){.grid.cols2{grid-template-columns:1fr 1fr}.grid.cols3{grid-template-columns:1fr 1fr 1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;
+    transition:transform .18s ease,border-color .18s ease}
+  .card:hover{transform:translateY(-3px);border-color:#343442}
+  .card .icon{width:46px;height:46px;border-radius:13px;background:#16233f;border:1px solid #24457e;
+    display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:15px}
+  .card h3{font-size:1.05rem;margin-bottom:7px}
+  .card p{color:var(--muted);font-size:.92rem}
   /* ---------- 展示 ---------- */
-  .shot{background:#1a1a20;border:1px dashed #3a3a44;border-radius:var(--radius);
-    display:flex;align-items:center;justify-content:center;text-align:center;padding:32px 20px}
-  .shot.hero-shot{aspect-ratio:16/9}
-  .shot .shot-label{font-weight:700;font-size:1rem}
-  .shot .shot-label span{display:block;font-weight:400;font-size:.82rem;color:var(--muted);margin-top:8px}
-  .show-grid{display:grid;gap:16px;margin-top:16px}
+  .show-grid{display:grid;gap:16px}
   @media(min-width:640px){.show-grid{grid-template-columns:1fr 1fr}}
-  .show-grid .shot{aspect-ratio:4/3}
-  /* ---------- 购买 / FAQ ---------- */
-  .price-card{text-align:left}
-  .price-row{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:6px 0 10px}
-  .price-now{font-size:2.2rem;font-weight:800;background:var(--grad);
+  .shot{background:#121218;border:1px dashed #383844;border-radius:var(--radius);
+    display:flex;align-items:center;justify-content:center;text-align:center;padding:26px 18px;aspect-ratio:4/3}
+  .shot .shot-label{font-weight:700;font-size:.98rem}
+  .shot .shot-label span{display:block;font-weight:400;font-size:.8rem;color:var(--muted);margin-top:7px}
+  /* ---------- 价格 ---------- */
+  .price-card{position:relative;border-color:#2c4a7d;background:linear-gradient(180deg,#171a24,#141419)}
+  .price-badge{position:absolute;top:-13px;left:26px;background:var(--grad);color:#fff;
+    font-size:.74rem;font-weight:800;padding:4px 13px;border-radius:999px;letter-spacing:.05em}
+  .price-row{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap;margin:8px 0 12px}
+  .price-now{font-size:2.5rem;font-weight:800;background:var(--grad);
     -webkit-background-clip:text;background-clip:text;color:transparent}
   .price-was{color:var(--muted);text-decoration:line-through;font-size:1.05rem}
-  .price-note{color:var(--muted);font-size:.9rem}
-  .price-feats{list-style:none;margin:14px 0 4px}
-  .price-feats li{padding:5px 0;color:var(--ink);font-size:.95rem}
+  .price-note{color:var(--muted);font-size:.88rem}
+  .price-feats{list-style:none;margin:16px 0 22px}
+  .price-feats li{padding:5px 0;font-size:.95rem}
   .price-feats li::before{content:"✓ ";color:var(--accent2);font-weight:800}
-  .steps{display:grid;gap:16px;counter-reset:step}
+  .steps{display:grid;gap:16px}
   @media(min-width:640px){.steps{grid-template-columns:1fr 1fr 1fr}}
-  .step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
-  .step .num{width:34px;height:34px;border-radius:50%;background:var(--grad);color:#fff;
+  .step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .step .num{width:33px;height:33px;border-radius:50%;background:var(--grad);color:#fff;
     display:flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:12px}
   .step h3{font-size:1rem;margin-bottom:6px}
   .step p{color:var(--muted);font-size:.9rem}
-  details.faq{background:var(--card);border:1px solid var(--line);border-radius:14px;
-    padding:16px 20px;margin-bottom:12px}
-  details.faq summary{cursor:pointer;font-weight:700;font-size:.98rem}
+  .fineprint{color:var(--muted);font-size:.86rem;margin-top:18px}
+  /* ---------- FAQ ---------- */
+  details.faq{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:17px 21px;margin-bottom:12px}
+  details.faq summary{cursor:pointer;font-weight:700;font-size:.97rem}
   details.faq p{color:var(--muted);font-size:.92rem;margin-top:10px}
-  /* ---------- 关于 / 联系 ---------- */
-  .about{background:var(--card);border:1px solid var(--line);border-radius:22px;
-    padding:34px 28px;box-shadow:0 2px 8px rgba(0,0,0,.30)}
-  .about p{color:var(--muted);margin-bottom:14px}
-  .about p strong{color:var(--ink)}
-  .contact-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
-  .contact-row .btn{cursor:default}
-  footer{text-align:center;color:var(--muted);font-size:.82rem;padding:36px 20px 48px}
+  /* ---------- 页脚 ---------- */
+  footer{margin-top:84px;border-top:1px solid var(--line);background:var(--bg2)}
+  footer .wrap{padding:38px 24px 44px;display:flex;flex-wrap:wrap;gap:18px 34px;align-items:center;justify-content:space-between}
+  footer .fbrand{font-weight:800}
+  footer .fnote{color:var(--muted);font-size:.84rem;width:100%}
+  footer a{color:var(--muted);text-decoration:none;font-size:.88rem}
+  footer a:hover{color:var(--ink)}
+  .flinks{display:flex;gap:20px;flex-wrap:wrap}
   /* ---------- 动效 ---------- */
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
   .reveal.in{opacity:1;transform:none}
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+  @media(max-width:560px){nav ul .navlink.hideS{display:none}}
 </style>
 </head>
 <body>
 
 <nav>
   <div class="wrap">
-    <div class="logo">hsine<span>.ai</span></div>
+    <div class="brand"><span class="mark">万</span><span>WanYing <small>万影</small></span></div>
     <ul>
-      <li><a class="navlink" href="#products">Product</a></li>
-      <li><a class="navlink" href="#buy">Buy</a></li>
-      <li><a class="navlink" href="#showcase">Showcase</a></li>
-      <li><a class="navlink" href="#tools">Tools</a></li>
-      <li><a class="navlink" href="#contact">Contact</a></li>
-      <li><a class="navlink" href="index.html">中文</a></li>
-      <li><a class="navlink" href="en.html">EN</a></li>
-      <li><a class="navlink" href="ja.html">日本語</a></li>
+      <li><a class="navlink hideS" href="#features">Features</a></li>
+      <li><a class="navlink hideS" href="#showcase">Showcase</a></li>
+      <li><a class="navlink hideS" href="#buy">Pricing</a></li>
+      <li><a class="navlink hideS" href="#faq">FAQ</a></li>
+      <li><a class="navlink lang" href="index.html">中文</a></li>
+      <li><a class="navlink lang" href="en.html">EN</a></li>
+      <li><a class="navlink lang" href="ja.html">日本語</a></li>
+      <li><a class="nav-cta" href="#buy">Buy</a></li>
     </ul>
   </div>
 </nav>
 
 <header class="hero">
   <div class="wrap">
-    <div class="badge reveal">✦ Indie developer</div>
-    <h1 class="reveal"><span class="hl">WanYing</span><br>Desktop Image & Video Studio</h1>
-    <p class="lead reveal">I'm hsine, an independent developer. WanYing is the desktop creative studio I built from scratch with AI pair programming: image editing and layers, local AI image generation (Qwen-Image 2.1), local AI video on a production canvas (MiniMax-H3), and an optional cloud engine. Everything runs on your own machine.</p>
+    <div class="badge reveal">Local-first · One-time purchase · 14-day free trial</div>
+    <h1 class="reveal">WanYing <span class="hl">万影</span><br>The Local AI Visual Studio</h1>
+    <p class="lead reveal">A desktop studio for short-video creators: image editing, layers, local AI image and video generation — all on your own computer. Your media never leaves your machine. No queues, no per-use fees.</p>
     <div class="cta reveal">
-      <a class="btn primary" href="#products">Meet WanYing</a>
-      <a class="btn ghost" href="#contact">Contact me</a>
+      <a class="btn primary" href="#buy">Buy Pro — ¥129</a>
+      <a class="btn ghost" href="#features">Explore features</a>
     </div>
     <div class="stats reveal">
-      <div class="stat"><b>14 days</b><small>Full-featured trial</small></div>
+      <div class="stat"><b>14 days</b><small>Full-featured free trial</small></div>
       <div class="stat"><b>One-time</b><small>No subscription</small></div>
-      <div class="stat"><b>100%</b><small>AI pair-programmed</small></div>
+      <div class="stat"><b>2.x</b><small>Free updates included</small></div>
+      <div class="stat"><b>100%</b><small>Runs locally</small></div>
+    </div>
+    <div class="frame reveal">
+      <div class="frame-bar"><i></i><i></i><i></i></div>
+      <div class="frame-body"><div class="shot-label">App UI showcase (to be generated)<span>showcase/ui.png · 1600×900</span></div></div>
     </div>
   </div>
 </header>
 
 <main class="wrap">
 
-  <section class="block" id="products">
-    <div class="kicker reveal">Product</div>
-    <h2 class="sec reveal">WanYing · Desktop Creative Studio</h2>
-    <p class="secdesc reveal">A Qt6 desktop studio for creators: editing, layers, local AI image and video generation. Free 14-day full trial, then a one-time purchase.</p>
-    <div class="grid">
-      <div class="card product reveal">
-        <div class="meta">
-          <div class="picon" style="background:linear-gradient(135deg,#3d7ae0,#4c8dff)">✦</div>
-          <div><h3>WanYing</h3><div class="en">SuperImgStudio · Image & Video · Local AI</div></div>
-        </div>
-        <p>Crop, rotate, color tools and a layer system; local Qwen-Image text-to-image and image editing; a production canvas that turns storyboards into MiniMax-H3 video clips; an optional OpenAI cloud engine. The Pro version removes watermarks and unlocks all generation features.</p>
-        <div class="links">
-          <a class="linkbtn hot" href="#buy">See pricing & buy →</a>
-        </div>
-      </div>
+  <section class="block" id="features">
+    <div class="kicker reveal">Features</div>
+    <h2 class="sec reveal">One studio, from edit to final cut</h2>
+    <p class="secdesc reveal">The whole pipeline on one desk, running locally: edit, generate images, generate video, assemble.</p>
+    <div class="grid cols3">
+      <div class="card reveal"><div class="icon">🖼</div><h3>Image editing & layers</h3><p>Crop, color, masks, adjustment layers and layer styles — everyday editing in one place.</p></div>
+      <div class="card reveal"><div class="icon">✨</div><h3>Local AI image generation</h3><p>Qwen-Image 2.1 runs on your machine: text-to-image and image editing, no uploads, no queues.</p></div>
+      <div class="card reveal"><div class="icon">🎬</div><h3>AI video & production canvas</h3><p>Local MiniMax-H3 video generation; storyboards, references and assembly in one flow.</p></div>
+      <div class="card reveal"><div class="icon">📝</div><h3>Script assistant</h3><p>A writing model that polishes scripts and breaks them into storyboards and executable workflows.</p></div>
+      <div class="card reveal"><div class="icon">📦</div><h3>Templates & content packs</h3><p>Import workflow templates and content packs; save what works and reuse it in one click.</p></div>
+      <div class="card reveal"><div class="icon">🔒</div><h3>Local-first, offline licensing</h3><p>Media and models stay on your PC. Signed offline license — no account, no phone-home.</p></div>
+    </div>
+  </section>
+
+  <section class="block" id="showcase">
+    <div class="kicker reveal">Showcase</div>
+    <h2 class="sec reveal">What WanYing looks like</h2>
+    <p class="secdesc reveal">Real UI screenshots; style samples generated with WanYing's own AI engine.</p>
+    <div class="show-grid">
+      <div class="shot reveal"><div class="shot-label">Style sample 1 · Cyberpunk<span>showcase/style-1.png</span></div></div>
+      <div class="shot reveal"><div class="shot-label">Style sample 2 · Ink landscape<span>showcase/style-2.png</span></div></div>
+      <div class="shot reveal"><div class="shot-label">Style sample 3 · Minimal geometry<span>showcase/style-3.png</span></div></div>
+      <div class="shot reveal"><div class="shot-label">Style sample 4 · Cinematic realism<span>showcase/style-4.png</span></div></div>
     </div>
   </section>
 
   <section class="block" id="buy">
-    <div class="kicker reveal">Buy</div>
-    <h2 class="sec reveal">WanYing · Pricing</h2>
-    <p class="secdesc reveal">The product formerly known as imgine — the name is now unified as WanYing. Try it free for 14 days with every feature open; buy only if it earns a place in your workflow.</p>
+    <div class="kicker reveal">Pricing</div>
+    <h2 class="sec reveal">Simple pricing, buy once</h2>
+    <p class="secdesc reveal">Start with a 14-day free trial with every feature open. Buy once only if it earns its place.</p>
     <div class="grid cols2">
       <div class="card price-card reveal">
+        <span class="price-badge">LAUNCH OFFER</span>
         <h3>WanYing Pro</h3>
         <div class="price-row">
           <span class="price-now">¥129</span>
           <span class="price-was">¥199</span>
-          <span class="price-note">Launch price · one-time purchase (≈ US$18, list ≈ US$28)</span>
+          <span class="price-note">One-time purchase (≈ US$18, list ¥199 ≈ US$28)</span>
         </div>
         <ul class="price-feats">
-          <li>Pay once, use forever — no subscription</li>
+          <li>All generation and editing features unlocked</li>
+          <li>No watermarks on exports</li>
           <li>Free updates within the 2.x line</li>
-          <li>No watermarks; all generation and editing features unlocked</li>
-          <li>Offline activation — no account, no phone-home</li>
+          <li>Offline activation — no account</li>
+          <li>Full refund if your PC is below the minimum spec</li>
         </ul>
+        <!-- 爱发电商品上架后：把 href 换成商品链接即可 -->
+        <a class="btn primary" href="#contact" id="afdian-link">Buy / contact to purchase →</a>
+        <p class="fineprint">International checkout (Lemon Squeezy / Paddle) is in preparation. Until it opens, purchases are handled via the contact links below — same price, same delivery.</p>
       </div>
       <div class="card reveal">
-        <h3>Check your GPU first</h3>
+        <h3>System requirements</h3>
         <p>Local AI generation is GPU-hungry: <strong style="color:var(--ink)">minimum RTX 3060 12GB, RTX 3090-class recommended</strong>, 16GB RAM or more suggested. Below the minimum, please don't buy — and if you bought and turn out to be below it, you get a full refund.</p>
         <p style="margin-top:10px">Model weights are not bundled with the app; they are free to download (see the FAQ).</p>
       </div>
     </div>
-    <h3 class="reveal" style="margin:34px 0 16px;font-size:1.1rem">Buying takes three steps</h3>
+    <h3 class="reveal" style="margin:36px 0 16px;font-size:1.08rem">Buying takes three steps</h3>
     <div class="steps">
-      <div class="step reveal"><div class="num">1</div><h3>Contact me to purchase</h3><p>International checkout is being set up. Until it opens, purchases are handled personally: reach me via the contact section below and leave your email — the license file is sent to that email.</p></div>
-      <div class="step reveal"><div class="num">2</div><h3>License file within 24 hours</h3><p>Manual delivery for now, promised within 24 hours (usually much faster). Nothing in spam? Contact me again.</p></div>
-      <div class="step reveal"><div class="num">3</div><h3>Import and you're activated</h3><p>Open WanYing → System → License → Import License File. Done — fully offline, no account to create.</p></div>
+      <div class="step reveal"><div class="num">1</div><h3>Start the free trial</h3><p>Download the Windows installer (public download going live — until then, get the trial package via the contact links below). Every feature is open for 14 days.</p></div>
+      <div class="step reveal"><div class="num">2</div><h3>Purchase</h3><p>International checkout is being set up; for now, contact me below and leave your email — the license file is sent to that email.</p></div>
+      <div class="step reveal"><div class="num">3</div><h3>Import and you're activated</h3><p>Your license file arrives within 24 hours. Import it in WanYing under System → License and you're done.</p></div>
     </div>
-    <div class="reveal" style="margin-top:26px;display:flex;gap:12px;flex-wrap:wrap;align-items:center">
-      <a class="btn primary" href="#contact">Buy / contact to purchase →</a>
-      <span style="color:var(--muted);font-size:.9rem">International checkout (Lemon Squeezy / Paddle) is in preparation. Manual purchases in the meantime: same price, same 24-hour delivery.</span>
-    </div>
+    <p class="fineprint reveal">Activation is fully offline. Your trial-period work and settings carry over untouched.</p>
   </section>
 
   <section class="block" id="faq">
     <div class="kicker reveal">FAQ</div>
     <h2 class="sec reveal">Questions before you buy</h2>
-    <div style="height:14px"></div>
+    <div style="height:12px"></div>
     <details class="faq reveal">
       <summary>Can my PC run it?</summary>
       <p>Local image and video generation lean on your GPU's VRAM. Minimum RTX 3060 12GB (video uses the low-VRAM configuration there), RTX 3090-class recommended, 16GB RAM or more suggested. If your machine is below the minimum, please don't buy; if you already bought and are below it, you get a full refund.</p>
@@ -249,7 +258,7 @@
     </details>
     <details class="faq reveal">
       <summary>What about refunds?</summary>
-      <p>Full refund if your PC is below the minimum requirements. For anything else, reach me through your order or the contact section and we'll sort it out.</p>
+      <p>Full refund if your PC is below the minimum requirements. For anything else, reach me through your order or the contact links and we'll sort it out.</p>
     </details>
     <details class="faq reveal">
       <summary>Any regional limits I should know about?</summary>
@@ -257,64 +266,23 @@
     </details>
   </section>
 
-  <section class="block" id="showcase">
-    <div class="kicker reveal">Showcase</div>
-    <h2 class="sec reveal">What WanYing looks like</h2>
-    <p class="secdesc reveal">Real UI screenshots; style samples generated with WanYing's own AI engine.</p>
-    <div class="shot hero-shot reveal">
-      <div class="shot-label">App UI showcase (to be generated)<span>showcase/ui.png · 1600×900</span></div>
-    </div>
-    <div class="show-grid">
-      <div class="shot reveal"><div class="shot-label">Style sample 1 · Cyberpunk<span>showcase/style-1.png</span></div></div>
-      <div class="shot reveal"><div class="shot-label">Style sample 2 · Ink landscape<span>showcase/style-2.png</span></div></div>
-      <div class="shot reveal"><div class="shot-label">Style sample 3 · Minimal geometry<span>showcase/style-3.png</span></div></div>
-      <div class="shot reveal"><div class="shot-label">Style sample 4 · Cinematic realism<span>showcase/style-4.png</span></div></div>
-    </div>
-  </section>
-
-  <section class="block" id="tools">
-    <div class="kicker reveal">Tools</div>
-    <h2 class="sec reveal">Handy online tools</h2>
-    <p class="secdesc reveal">Free tools I actually use, collected as I find them.</p>
-    <div class="grid cols2" id="tools-grid"></div>
-  </section>
-
-  <section class="block" id="contact">
-    <div class="kicker reveal">Contact</div>
-    <h2 class="sec reveal">Find me</h2>
-    <div class="about reveal">
-      <p>Hi, I'm hsine — an independent developer translating frontier AI capability into tools ordinary people can use every day.</p>
-      <p>WanYing is the studio I use for my own images and videos. If it helps me, it may help you. Purchases, feedback and collaborations: reach me below.</p>
-      <div class="contact-row">
-        <a class="btn ghost" href="https://x.com/zgybw520" target="_blank" rel="noopener">𝕏 Twitter @zgybw520</a>
-        <span class="btn ghost">Binance Square @zgybw</span>
-      </div>
-    </div>
-  </section>
-
 </main>
 
-<footer>
-  © <span id="year">2026</span> hsine · Built with AI · Stay honest, keep iterating
+<footer id="contact">
+  <div class="wrap">
+    <span class="fbrand">WanYing 万影</span>
+    <div class="flinks">
+      <a href="https://x.com/zgybw520" target="_blank" rel="noopener">𝕏 @zgybw520</a>
+      <span style="color:var(--muted);font-size:.88rem">Binance Square @zgybw</span>
+      <a href="index.html">中文</a><a href="en.html">EN</a><a href="ja.html">日本語</a>
+    </div>
+    <p class="fnote">WanYing is built and maintained by independent developer hsine. Purchases, feedback and collaborations: use the contact links above.</p>
+    <p class="fnote">© <span id="year">2026</span> hsine</p>
+  </div>
 </footer>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
-  var TOOLS = [
-    {icon:"⬇️", name:"cobalt.tools", desc:"Free, open-source media downloader: paste a link and save video or audio from X / YouTube / Instagram and more. No ads, no sign-up.", url:"https://cobalt.tools/"},
-  ];
-  (function renderTools(){
-    var grid = document.getElementById('tools-grid');
-    if(!grid) return;
-    grid.innerHTML = TOOLS.map(function(t){
-      return '<div class="card reveal">'
-        + '<div class="icon">' + t.icon + '</div>'
-        + '<h3>' + t.name + '</h3>'
-        + '<p>' + t.desc + '</p>'
-        + '<div style="margin-top:16px"><a class="linkbtn" href="' + t.url + '" target="_blank" rel="noopener">Open tool →</a></div>'
-        + '</div>';
-    }).join('');
-  })();
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
